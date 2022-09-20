@@ -24,3 +24,35 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+*::selection {
+  color: var(--light-yellow);
+  background-color: var(--bright-green);
+}
+
+ion-header {
+  h1 {
+    font-size: 1.25rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+  ion-toolbar {
+    /* padding: 0 1rem; */
+    /* box-shadow: 0 8px 40px rgba(0,0,0,0.2); */
+    border: none;
+  }
+}
+
+/* ion-tab-bar {
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  border: none;
+} */
+
+
+ion-button {
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+ion-button::part(native) {
+  box-shadow: none;
+  padding: 1rem 2rem;
+}

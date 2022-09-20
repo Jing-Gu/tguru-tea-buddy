@@ -1,0 +1,24 @@
+<form [formGroup]="noteForm">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="tabs/note" icon="chevron-back-outline"
+          (click)="updateNote()">
+        </ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="deleteNote()">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content *ngIf="noteService?.selectedNote">
+    <div class="details-wrapper">
+      <ion-textarea [(ngModel)]="noteService.selectedNote.title" autoGrow="true" placeholder="Titre" class="note-title" formControlName="title"></ion-textarea>
+      <ion-textarea [(ngModel)]="noteService.selectedNote.content" autoGrow="true" formControlName="content"></ion-textarea>
+    </div>
+  </ion-content>
+</form>
+

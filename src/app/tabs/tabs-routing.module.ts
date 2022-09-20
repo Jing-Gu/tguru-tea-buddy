@@ -8,31 +8,55 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'brew',
+        children: [
+          { path: '',
+            loadChildren: () => import('../brew/brew.module').then(m => m.BrewPageModule)
+          },
+        ]
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'note',
+        children: [
+          { path: '',
+            loadChildren: () => import('../note/note.module').then(m => m.NotePageModule)
+          },
+          {
+            path: 'detail/:id',
+            loadChildren: () => import('../note/note-details/note-details.module').then(m => m.NoteDetailsPageModule)
+          }
+        ]
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'read',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../read/read.module').then(m => m.ReadPageModule)
+          },
+          {
+            path: 'detail',
+            loadChildren: () => import('../read/tea-details/tea-details.module').then(m => m.TeaDetailsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'more',
+        loadChildren: () => import('../more/more.module').then(m => m.MorePageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/timer',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/brew',
     pathMatch: 'full'
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
 })

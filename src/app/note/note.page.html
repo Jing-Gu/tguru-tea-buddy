@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <h1>Note</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addNewNote()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-content>
+  <ng-container *ngIf="noteService.notes && noteService.notes.length > 0; else noNote">
+    <ion-list *ngFor="let note of noteService.notes">
+      <ion-item button [routerLink]="['detail', note.id]">
+        <ion-label class="ion-text-wrap">
+          <h2>{{note?.title ? note?.title : 'Sans titre'}}</h2>
+          <p class="content-short">{{note?.content}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <ng-template #noNote>
+    <div class="no-note">
+      <p>Aucune note actuellement</p>
+      <ion-icon name="file-tray-outline"></ion-icon>
+    </div>
+  </ng-template>
+
+  <form [formGroup]="noteForm">
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="closeModal()">
+                  <ion-icon name="chevron-back-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+              <ion-title>Nouvelle Note</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="submitNote()" [disabled]="!noteForm.valid" color="primary">
+                  <ion-icon name="save-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <ion-textarea placeholder="Titre" autoGrow="true" class="note-title" formControlName="title"></ion-textarea>
+            <ion-textarea placeholder=". . ." autoGrow="true" formControlName="content"></ion-textarea>
+          </ion-content>
+      </ng-template>
+    </ion-modal>
+  </form>
+
+</ion-content>

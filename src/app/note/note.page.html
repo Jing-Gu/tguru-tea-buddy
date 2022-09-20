@@ -12,14 +12,16 @@
 
 <ion-content>
   <ng-container *ngIf="noteService.notes && noteService.notes.length > 0; else noNote">
-    <ion-list *ngFor="let note of noteService.notes">
-      <ion-item button [routerLink]="['detail', note.id]">
-        <ion-label class="ion-text-wrap">
-          <h2>{{note?.title ? note?.title : 'Sans titre'}}</h2>
-          <p class="content-short">{{note?.content}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+    <div class='note-list'>
+      <ion-list *ngFor="let note of noteService.notes">
+        <ion-item button [routerLink]="['detail', note.id]">
+          <ion-label class="ion-text-wrap">
+            <h2>{{note?.title ? note?.title : 'Sans titre'}}</h2>
+            <p class="content-short">{{note?.content}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
   </ng-container>
   <ng-template #noNote>
     <div class="no-note">

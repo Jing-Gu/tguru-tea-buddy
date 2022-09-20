@@ -18,7 +18,16 @@
     <div class="details-wrapper">
       <ion-textarea [(ngModel)]="noteService.selectedNote.title" autoGrow="true" placeholder="Titre" class="note-title" formControlName="title"></ion-textarea>
       <ion-textarea [(ngModel)]="noteService.selectedNote.content" autoGrow="true" formControlName="content"></ion-textarea>
+      <div class='date'>
+        <p *ngIf="noteService?.selectedNote?.creationTime">
+          Créé: {{noteService?.selectedNote?.creationTime | date: 'MM/dd/yyyy'}}
+        </p>
+        <p *ngIf="noteService?.selectedNote?.modifiedTime">
+          Modifié dernierement: {{noteService?.selectedNote?.modifiedTime | date: 'MM/dd/yyyy'}}
+        </p>
+      </div>
     </div>
   </ion-content>
 </form>
+
 

@@ -15,10 +15,12 @@ ion-content {
   justify-content: space-between;
 }
 
-
-
 ion-button::part(native) {
   padding: 1rem;
+}
+
+.note-list {
+  margin: 1rem 0;
 }
 
 .no-note {
@@ -40,6 +42,7 @@ ion-button::part(native) {
 }
 
 ion-list {
+  padding: 0;
   h2 {
     /* font-weight: bold; */
     margin-bottom: .5rem;
@@ -49,8 +52,6 @@ ion-list {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    line-height: 16px;
-    max-height: 32px;
     -webkit-box-orient: vertical;
   }
 }

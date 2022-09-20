@@ -4,6 +4,15 @@ form {
   flex-direction: column;
   .details-wrapper {
     padding: 1rem;
+    .date {
+      margin-left: .5rem;
+      font-size: .75rem;
+      color: var(--grey-500);
+      margin-top: 3rem;
+      p {
+        margin: 0 !important;
+      }
+    }
   }
   .note-title {
     font-size: 1.25rem;

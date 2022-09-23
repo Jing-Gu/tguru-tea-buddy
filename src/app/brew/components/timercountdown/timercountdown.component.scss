@@ -1,0 +1,32 @@
+.countdown{
+  ::ng-deep{
+    ngx-gauge {
+      left: 50%;
+      transform: translateX(-50%);
+      ngx-gauge-label {
+        display: inline-block;
+        width: 80px;
+      }
+      .reading-block {
+        display: none !important;
+      }
+      .reading-label {
+        top: 50%;
+        transform: translateY(-50%) !important;
+      }
+    }
+  }
+}
+
+.time-display {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 8px;
+  text-align: center;
+  color: var(--dark-navy);
+  margin: .5rem 0 1.5rem 0;
+}
+
+img {
+  filter: invert(56%) sepia(78%) saturate(498%) hue-rotate(34deg) brightness(101%) contrast(75%);
+}

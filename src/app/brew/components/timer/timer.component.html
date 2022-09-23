@@ -1,0 +1,69 @@
+<ng-container *ngIf="currentTea?.label !== 'Customize'; else customizeTimer">
+  <p class="tea-name">{{currentTea?.label}}</p>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class='ion-text-center'>
+        <ion-icon name="leaf-outline"></ion-icon>
+        <p>{{currentTea?.teaAmount}}<span>&nbsp;</span><span>g</span></p>
+      </ion-col>
+      <ion-col class='ion-text-center'>
+        <ion-icon name="water-outline"></ion-icon>
+        <p>{{currentTea?.waterAmount}}<span>&nbsp;</span><span>ml</span></p>
+      </ion-col>
+      <ion-col class='ion-text-center'>
+        <ion-icon name="thermometer-outline"></ion-icon>
+        <p>{{currentTea?.temperature}}<span>&nbsp;</span><span>˚C</span></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div>
+    <app-timercountdown [currentTea]='currentTea' [timerIsOff]='timerIsOff' (timerIsDone)='setTimerDone($event)'></app-timercountdown>
+    <ng-container *ngIf='timerIsOff; else timerOn'>
+      <ion-button color='primary' expand='block' shape='round' (click)='startTimer()'>
+        Start brewing
+      </ion-button>
+      <ion-button color='tertiary' expand='block' shape='round' fill='outline' (click)='cancelTimer()'>
+        Cancel
+      </ion-button>
+    </ng-container>
+    <ng-template #timerOn>
+      <ion-button color='secondary' expand='block' shape='round' (click)='resetTimer()'>
+        Reset
+      </ion-button>
+    </ng-template>
+  </div>
+</ng-container>
+
+<ng-template #customizeTimer>
+  <form (ngSubmit)='setCustomTimer(timerForm)' #timerForm='ngForm'>
+    <div class='flex-box'>
+      <ion-item>
+        <ion-label position='floating'>Minutes</ion-label>
+        <ion-input type='number' name='minutes' min='0' required ngModel #minute='ngModel'></ion-input>
+        <small *ngIf='!minute.valid && minute.touched'>Please enter a valid number for the minutes.</small>
+      </ion-item>
+      <ion-item>
+        <ion-label position='floating'>Seconds</ion-label>
+        <ion-input type='number' name='seconds' min='0' required ngModel #second='ngModel'></ion-input>
+        <small *ngIf='!second.valid && second.touched'>Please enter a valid number for the seconds.</small>
+      </ion-item>
+    </div>
+    <app-timercountdown [currentTea]='currentTea' [timerIsOff]='timerIsOff' [customizedTimer]='customizedTimeInSeconds' (timerIsDone)='setTimerDone($event)'></app-timercountdown>
+
+    <ng-container *ngIf='timerIsOff; else timerOn'>
+      <ion-button color='primary' expand='block' shape='round' type='submit' [disabled]='!minute.valid || !second.valid'>
+        Start brewing
+      </ion-button>
+      <ion-button color='tertiary' expand='block' shape='round' fill='outline' (click)='cancelTimer()'>
+        Cancel
+      </ion-button>
+    </ng-container>
+    <ng-template #timerOn>
+      <ion-button color='secondary' expand='block' shape='round' (click)='resetTimer()'>
+        Reset
+      </ion-button>
+    </ng-template>
+  </form>
+</ng-template>
+

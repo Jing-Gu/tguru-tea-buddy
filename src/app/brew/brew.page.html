@@ -1,9 +1,18 @@
-<ion-header>
+<ion-header class="ion-no-border" [class.hide]="hideHeader">
   <ion-toolbar>
-    <ion-title>brew</ion-title>
+    <h1>Paramètre d'infusion</h1>
+    <div class='tabs'>
+      <ion-text (click)='selectTimer("standard")' [class.active]="currentTab === 'standard'">Standard</ion-text>
+      <ion-text (click)='selectTimer("master")' [class.active]="currentTab === 'master'">TGuru Master</ion-text>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ng-container *ngIf="currentTab === 'standard'; else tmaster">
+    <app-brewsimple></app-brewsimple>
+  </ng-container>
+  <ng-template #tmaster>
+    <app-brewmaster></app-brewmaster>
+  </ng-template>
 </ion-content>

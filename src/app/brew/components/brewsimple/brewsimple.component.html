@@ -1,0 +1,11 @@
+<ng-container *ngIf='showAllTeas; else showTimer'>
+  <div class="tea-group">
+    <button class="tea-tile" *ngFor="let tea of allTeas" (click)='goToTimer(tea)'>
+      <img src='assets/icon/{{tea.icon}}' alt=''>
+      <span>{{tea.label}}</span>
+    </button>
+  </div>
+</ng-container>
+<ng-template #showTimer>
+  <app-timer [currentTea]='currentTea'></app-timer>
+</ng-template>

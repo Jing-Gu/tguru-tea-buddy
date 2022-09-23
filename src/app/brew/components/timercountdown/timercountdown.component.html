@@ -1,0 +1,9 @@
+<div class='countdown'>
+  <ngx-gauge type='full' cap='round' size='180' thick='10'
+    foregroundColor='#8CB120' backgroundColor='#EFEFCD' [value]='gaugePercent'>
+    <ngx-gauge-label>
+      <img src='assets/icon/{{currentTea?.icon}}' class='teacup-icon' alt=''>
+    </ngx-gauge-label>
+  </ngx-gauge>
+  <p class='time-display'>{{ brewingTime ? brewingTime : "_ _ : _ _" }}</p>
+</div>

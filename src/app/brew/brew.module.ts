@@ -11,6 +11,7 @@ import { BrewmasterComponent } from './components/brewmaster/brewmaster.componen
 import { BrewsimpleComponent } from './components/brewsimple/brewsimple.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { TimercountdownComponent } from './components/timercountdown/timercountdown.component';
+import { TeareadypopupComponent } from './components/teareadypopup/teareadypopup.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,13 @@ import { TimercountdownComponent } from './components/timercountdown/timercountd
     NgxGaugeModule,
     BrewPageRoutingModule
   ],
-  declarations: [BrewPage, BrewmasterComponent, BrewsimpleComponent, TimerComponent, TimercountdownComponent]
+  declarations: [
+    BrewPage,
+    BrewmasterComponent,
+    BrewsimpleComponent,
+    TimerComponent,
+    TimercountdownComponent,
+    TeareadypopupComponent
+  ]
 })
 export class BrewPageModule {}

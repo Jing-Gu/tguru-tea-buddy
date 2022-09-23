@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <h1>Note</h1>
+    <h1>Carnet de notes</h1>
   </ion-toolbar>
 </ion-header>
 
@@ -15,6 +15,7 @@
     <div class='note-list'>
       <ion-list *ngFor="let note of noteService.notes">
         <ion-item button [routerLink]="['detail', note.id]">
+          <ion-icon *ngIf="note.pinned" name="bookmark" color="primary"></ion-icon>
           <ion-label class="ion-text-wrap">
             <h2>{{note?.title ? note?.title : 'Sans titre'}}</h2>
             <p class="content-short">{{note?.content}}</p>

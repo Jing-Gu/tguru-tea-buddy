@@ -8,9 +8,7 @@ import { Note } from '../interfaces/note';
 export class NotesService {
 
   notes: Note[] = [];
-  selectedNote;
-  loaded = false;
-
+  selectedNote: Note;
 
   constructor(private storage: Storage) {
     this.init();
@@ -34,18 +32,29 @@ export class NotesService {
   }
 
   createNote(title, content) {
+    const d = new Date();
     const id = Math.max(...this.notes.map(note => note.id), 0) + 1;
     this.notes.push({
       id,
       title,
       content,
+      creationTime: d,
+      modifiedTime: null,
+      pinned: null,
     });
     this.saveNotes();
   }
 
   updateNote(title, content) {
+    const d = new Date();
     this.selectedNote.title = title;
     this.selectedNote.content = content;
+    this.selectedNote.modifiedTime = d;
+    this.saveNotes();
+  }
+
+  pinNote(pinnded: boolean) {
+    this.selectedNote.pinned = pinnded;
     this.saveNotes();
   }
 

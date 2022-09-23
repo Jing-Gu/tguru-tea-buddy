@@ -4,4 +4,5 @@ export interface Note {
   content: string;
   creationTime: Date;
   modifiedTime?: Date | null;
+  pinned?: boolean | null;
 }

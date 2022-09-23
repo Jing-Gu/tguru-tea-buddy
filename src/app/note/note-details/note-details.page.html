@@ -7,6 +7,9 @@
         </ion-back-button>
       </ion-buttons>
       <ion-buttons slot="end">
+        <ion-button (click)="pinNote()">
+          <ion-icon [name]="noteService?.selectedNote?.pinned ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+        </ion-button>
         <ion-button (click)="deleteNote()">
           <ion-icon name="trash-outline"></ion-icon>
         </ion-button>

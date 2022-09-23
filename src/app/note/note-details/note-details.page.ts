@@ -11,6 +11,7 @@ import { NotesService } from 'src/app/services/notes.service';
 export class NoteDetailsPage implements OnInit {
 
   noteForm: FormGroup;
+  pinned = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +37,11 @@ export class NoteDetailsPage implements OnInit {
     } else {
       this.router.navigateByUrl('tabs/note');
     }
+  }
+
+  pinNote() {
+    this.pinned = !this.pinned;
+    this.noteService.pinNote(this.pinned);
   }
 
   deleteNote() {

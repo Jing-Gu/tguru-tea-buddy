@@ -16,7 +16,7 @@ export class NoteDetailsPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private noteService: NotesService) { }
+    public noteService: NotesService) { }
 
   ngOnInit() {
     this.noteForm = new FormGroup({

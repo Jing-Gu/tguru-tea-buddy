@@ -13,7 +13,7 @@ export class NotePage implements OnInit {
   noteForm: FormGroup;
   note;
 
-  constructor(private noteService: NotesService) { }
+  constructor(public noteService: NotesService) { }
 
   ngOnInit() {
     this.noteService.loadNotes();

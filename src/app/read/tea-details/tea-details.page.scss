@@ -1,0 +1,14 @@
+.tea-image {
+  height: 40vh;
+  overflow: hidden;
+  img {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    &.noImg {
+      height: 80%;
+      margin: auto;
+      filter: invert(54%) sepia(86%) saturate(411%) hue-rotate(34deg) brightness(102%) contrast(84%);
+    }
+  }
+}

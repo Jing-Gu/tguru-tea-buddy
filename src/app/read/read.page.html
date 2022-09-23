@@ -1,9 +1,22 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>read</ion-title>
+    <h1>Notions de thé</h1>
+    <ion-buttons slot="end">
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="teas$ | async as teas">
+    <ion-list>
+      <ion-item *ngFor="let tea of teas" (click)="goToTeaDetail(tea)">
+        <div class="tea-image">
+          <img [src]="tea.imageUrl ? tea.imageUrl : 'assets/icon/white_tea.svg'"
+            [class]="tea.imageUrl ? '' : 'noImg'" alt=''>
+        </div>
+        <ion-label>{{ tea.name }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 
 </ion-content>

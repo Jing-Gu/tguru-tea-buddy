@@ -1,0 +1,11 @@
+.tea-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-right: 1.5rem;
+  img.noImg {
+    filter: invert(54%) sepia(86%) saturate(411%) hue-rotate(34deg) brightness(102%) contrast(84%);
+  }
+}
+

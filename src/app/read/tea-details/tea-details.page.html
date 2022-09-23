@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tea-details</ion-title>
+    <ion-buttons slot='start'>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ teaDetail.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class='tea-image'>
+    <img [src]="teaDetail.imageUrl ? teaDetail.imageUrl : 'assets/icon/white_tea.svg'"
+      [class]="teaDetail.imageUrl ? '' : 'noImg'" alt=''>
+  </div>
+  <p [innerHTML]="teaDetail.description"></p>
 
 </ion-content>

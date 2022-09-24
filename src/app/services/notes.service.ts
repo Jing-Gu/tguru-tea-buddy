@@ -39,6 +39,7 @@ export class NotesService {
       id = Math.max(...this.notes.map(note => note.id), 0) + 1;
     } else {
       id = 0;
+      this.notes = [];
     };
     this.notes.push({
       id,

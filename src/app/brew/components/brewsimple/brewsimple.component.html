@@ -1,8 +1,13 @@
 <ng-container *ngIf='showAllTeas; else showTimer'>
   <div class="tea-group">
-    <button class="tea-tile" *ngFor="let tea of allTeas" (click)='goToTimer(tea)'>
+    <!-- <button class="tea-tile" *ngFor="let tea of allTeas" (click)='goToTimer(tea)'>
       <img src='assets/icon/{{tea.icon}}' alt=''>
       <span>{{tea.label}}</span>
+    </button> -->
+    <button class="tea-tile" [class]="tea.level === '2' ? 'medium' : tea.level === '3' ? 'long' : tea.level === '0' ? 'cus' :''"
+      *ngFor="let tea of allTeas" (click)='goToTimer(tea)'>
+      <span>{{tea.label}}</span>
+      <img src='assets/icon/{{tea.icon}}' alt=''>
     </button>
   </div>
 </ng-container>

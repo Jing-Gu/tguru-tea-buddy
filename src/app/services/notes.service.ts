@@ -15,7 +15,8 @@ export class NotesService {
   }
 
   async init() {
-    this.storage = await this.storage.create();
+    //await this.storage.defineDriver();
+    await this.storage.create();
   }
 
   async loadNotes() {
@@ -33,7 +34,12 @@ export class NotesService {
 
   createNote(title, content) {
     const d = new Date();
-    const id = Math.max(...this.notes.map(note => note.id), 0) + 1;
+    let id;
+    if (this.notes && this.notes.length > 0) {
+      id = Math.max(...this.notes.map(note => note.id), 0) + 1;
+    } else {
+      id = 0;
+    };
     this.notes.push({
       id,
       title,

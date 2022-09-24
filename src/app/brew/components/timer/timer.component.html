@@ -1,6 +1,5 @@
-<ng-container *ngIf="currentTea?.label !== 'Customize'; else customizeTimer">
+<ng-container *ngIf="currentTea?.name !== 'customize'; else customizeTimer">
   <p class="tea-name">{{currentTea?.label}}</p>
-
   <ion-grid>
     <ion-row>
       <ion-col class='ion-text-center'>
@@ -37,6 +36,7 @@
 
 <ng-template #customizeTimer>
   <form (ngSubmit)='setCustomTimer(timerForm)' #timerForm='ngForm'>
+    <p class="tea-name">{{currentTea?.label}}</p>
     <div class='flex-box'>
       <ion-item>
         <ion-label position='floating'>Minutes</ion-label>

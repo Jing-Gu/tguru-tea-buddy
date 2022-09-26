@@ -26,13 +26,12 @@ export class TimercountdownComponent implements OnChanges {
     public popoverController: PopoverController) { }
 
     ngOnChanges() {
-      console.log('check timer change', this.timerIsOff)
       this.checkDefaultBrewTime(this.currentTea.brewTime);
       if (!this.timerIsOff) {
-        if (this.currentTea.label !== 'Customize') {
+        if (this.currentTea.name !== 'customize') {
           this.calcTimer(this.currentTea.brewTime);
         }
-        if (this.currentTea.label === 'Customize') {
+        if (this.currentTea.name === 'customize') {
           this.calcTimer(this.customizedTimer);
         }
       } else {

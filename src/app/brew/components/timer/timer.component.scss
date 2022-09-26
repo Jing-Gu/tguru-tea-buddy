@@ -24,15 +24,39 @@ ion-grid {
     }
   }
 }
-
-
-.flex-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 2rem 2rem 2rem;
+.time-fields {
+  margin-bottom: 1rem;
+  .flex-box {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+    label {
+      font-size: .75rem;
+      display: block;
+      color: var(--bright-green);
+    }
+    input {
+      background: transparent;
+      border: 2px solid var(--bright-green);
+      border-radius: 8px;
+      padding: .5rem 1rem;
+      width: 80px;
+      font-size: 1.5rem;
+      &:focus {
+        outline: none !important;
+        border: 2px solid var(--medium-green);
+      }
+    }
+  }
 }
 
+
+small {
+  display: block;
+  text-align: center;
+}
 
 ion-button {
   height: auto;

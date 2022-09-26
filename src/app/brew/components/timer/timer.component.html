@@ -37,18 +37,21 @@
 <ng-template #customizeTimer>
   <form (ngSubmit)='setCustomTimer(timerForm)' #timerForm='ngForm'>
     <p class="tea-name">{{currentTea?.label}}</p>
-    <div class='flex-box'>
-      <ion-item>
-        <ion-label position='floating'>Minutes</ion-label>
-        <ion-input type='number' name='minutes' min='0' required ngModel #minute='ngModel'></ion-input>
-        <small *ngIf='!minute.valid && minute.touched'>Please enter a valid number for the minutes.</small>
-      </ion-item>
-      <ion-item>
-        <ion-label position='floating'>Seconds</ion-label>
-        <ion-input type='number' name='seconds' min='0' required ngModel #second='ngModel'></ion-input>
-        <small *ngIf='!second.valid && second.touched'>Please enter a valid number for the seconds.</small>
-      </ion-item>
+    <div class='time-fields'>
+      <div class='flex-box'>
+        <div>
+          <label for='minutes'>Minutes</label>
+          <input type='number' name='minutes' min='0' required ngModel #minute='ngModel'>
+        </div>
+        <div>
+          <label for='seconds'>Seconds</label>
+          <input type='number' name='seconds' min='0' required ngModel #second='ngModel'>
+        </div>
+      </div>
+      <small *ngIf='!minute.valid && minute.touched'>Please enter a valid number for the minutes.</small>
+      <small *ngIf='!second.valid && second.touched'>Please enter a valid number for the seconds.</small>
     </div>
+
     <app-timercountdown [currentTea]='currentTea' [timerIsOff]='timerIsOff' [customizedTimer]='customizedTimeInSeconds' (timerIsDone)='setTimerDone($event)'></app-timercountdown>
 
     <ng-container *ngIf='timerIsOff; else timerOn'>

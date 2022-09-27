@@ -45,6 +45,7 @@ export class NotesService {
       id,
       title,
       content,
+      abstract: content.slice(0, 80),
       creationTime: d,
       modifiedTime: null,
       pinned: null,
@@ -56,6 +57,7 @@ export class NotesService {
     const d = new Date();
     this.selectedNote.title = title;
     this.selectedNote.content = content;
+    this.selectedNote.abstract = content.slice(0, 80);
     this.selectedNote.modifiedTime = d;
     this.saveNotes();
   }

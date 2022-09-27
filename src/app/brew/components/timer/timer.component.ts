@@ -29,7 +29,7 @@ export class TimerComponent {
 
   setCustomTimer(timerForm: NgForm) {
     this.timerIsOff = false;
-    this.customizedTimeInSeconds = timerForm.value.minutes * 60 + timerForm.value.seconds;
+    this.customizedTimeInSeconds = +timerForm.value.minutes * 60 + +timerForm.value.seconds;
   }
 
   resetCustomTimer(timerForm: NgForm) {

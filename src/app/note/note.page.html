@@ -6,23 +6,21 @@
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button (click)="addNewNote()">
-    <ion-icon name="add"></ion-icon>
+    <ion-icon name="create-outline"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
 <ion-content>
   <ng-container *ngIf="noteService?.notes && noteService?.notes?.length > 0; else noNote">
-    <div class='note-list'>
-      <ion-list *ngFor="let note of noteService?.notes">
-        <ion-item button [routerLink]="['detail', note.id]">
-          <ion-icon *ngIf="note.pinned" name="bookmark" color="primary"></ion-icon>
-          <ion-label class="ion-text-wrap">
-            <h2>{{note?.title ? note?.title : 'Sans titre'}}</h2>
-            <p class="content-short">{{note?.content}}</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </div>
+    <ion-list *ngFor="let note of noteService?.notes">
+      <ion-item button [routerLink]="['detail', note.id]">
+        <ion-icon *ngIf="note.pinned" name="bookmark" color="primary"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h2>{{note?.title ? note?.title : 'Sans titre'}}</h2>
+          <p class="content-short">{{note?.content}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </ng-container>
   <ng-template #noNote>
     <div class="no-note">

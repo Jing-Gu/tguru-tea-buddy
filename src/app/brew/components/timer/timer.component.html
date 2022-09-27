@@ -20,10 +20,10 @@
     <app-timercountdown [currentTea]='currentTea' [timerIsOff]='timerIsOff' (timerIsDone)='setTimerDone($event)'></app-timercountdown>
     <ng-container *ngIf='timerIsOff; else timerOn'>
       <ion-button color='primary' expand='block' shape='round' (click)='startTimer()'>
-        Start brewing
+        Commencer
       </ion-button>
       <ion-button color='tertiary' expand='block' shape='round' fill='outline' (click)='cancelTimer()'>
-        Cancel
+        Annuler
       </ion-button>
     </ng-container>
     <ng-template #timerOn>
@@ -41,11 +41,11 @@
       <div class='flex-box'>
         <div>
           <label for='minutes'>Minutes</label>
-          <input type='number' name='minutes' min='0' required ngModel #minute='ngModel'>
+          <input inputmode="numeric" name='minutes' min='0' required ngModel #minute='ngModel'>
         </div>
         <div>
           <label for='seconds'>Seconds</label>
-          <input type='number' name='seconds' min='0' required ngModel #second='ngModel'>
+          <input inputmode="numeric" name='seconds' min='0' required ngModel #second='ngModel'>
         </div>
       </div>
       <small *ngIf='!minute.valid && minute.touched'>Please enter a valid number for the minutes.</small>
@@ -56,10 +56,10 @@
 
     <ng-container *ngIf='timerIsOff; else timerOn'>
       <ion-button color='primary' expand='block' shape='round' type='submit' [disabled]='!minute.valid || !second.valid'>
-        Start brewing
+        Commencer
       </ion-button>
       <ion-button color='tertiary' expand='block' shape='round' fill='outline' (click)='cancelTimer()'>
-        Cancel
+        Annuler
       </ion-button>
     </ng-container>
     <ng-template #timerOn>

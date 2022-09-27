@@ -9,9 +9,7 @@ import { NotesService } from '../services/notes.service';
 })
 export class NotePage implements OnInit {
   isModalOpen = false;
-
   noteForm: FormGroup;
-  note;
 
   constructor(public noteService: NotesService) { }
 
@@ -22,7 +20,6 @@ export class NotePage implements OnInit {
       content: new FormControl('', Validators.required)
     });
   }
-
 
   addNewNote() {
     this.isModalOpen = true;

@@ -42,23 +42,15 @@ ion-list {
       right: .5rem;
     }
   }
-  h2, .content-short {
+  h2 {
+    margin-bottom: .5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-  }
-  h2 {
-    margin-bottom: .5rem;
     -webkit-line-clamp: 1;
     -moz-line-clamp: 1;
-    /* autoprefixer: ignore next */
-  }
-  .content-short {
-    -webkit-line-clamp: 2;
-    -moz-line-clamp: 2;
-    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
   }
 }
 

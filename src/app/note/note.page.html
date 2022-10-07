@@ -17,7 +17,7 @@
         <ion-icon *ngIf="note.pinned" name="bookmark" color="primary"></ion-icon>
         <ion-label class="ion-text-wrap">
           <h2>{{note?.title ? note?.title : 'Sans titre'}}</h2>
-          <p class="content-short">{{note?.content}}</p>
+          <p>{{note?.abstract}}...</p>
         </ion-label>
       </ion-item>
     </ion-list>

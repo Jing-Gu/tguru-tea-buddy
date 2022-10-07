@@ -1,22 +1,46 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <h1>Notions de thé</h1>
-    <ion-buttons slot="end">
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ng-container *ngIf="teas$ | async as teas">
-    <ion-list>
-      <ion-item *ngFor="let tea of teas" (click)="goToTeaDetail(tea)">
-        <div class="tea-image">
-          <img [src]="tea.imageUrl ? tea.imageUrl : 'assets/icon/white_tea.svg'"
-            [class]="tea.imageUrl ? '' : 'noImg'" alt=''>
+  <div class='btn-roll'>
+    <ng-container *ngFor="let btn of allTeas; let i = index">
+      <button *ngIf="btn.name !== 'customize'" (click)="getTeaList(btn.contentfulTag, btn.label, i)" #i>
+        <div [class.active]="selectedIndex === i || (btn.id === 0 && firstBtnActive)">
+          <img src='assets/icon/{{btn.icon}}' alt=''>
+          <!-- TODO: use different colors of icon to swap -->
         </div>
-        <ion-label>{{ tea.name }}</ion-label>
-      </ion-item>
-    </ion-list>
+        <span *ngIf="btn.name !== 'customize'" [class.active]="selectedIndex === i || (btn.id === 0 && firstBtnActive)">
+          {{btn.label}}
+        </span>
+      </button>
+    </ng-container>
+  </div>
+
+  <ng-container *ngIf="teas$ | async as teas; else loading">
+    <ng-container *ngIf="teas && teas.length > 0; else noTeas">
+      <h2 class="tea-category-title">{{currentTeaCategory}}</h2>
+      <ion-list>
+        <ion-item *ngFor="let tea of teas" (click)="goToTeaDetail(tea)" lines="none" button>
+          <div class="tea-image">
+            <img [src]="tea.imageUrl ? tea.imageUrl : 'assets/icon/white_tea.svg'"
+              [class]="tea.imageUrl ? '' : 'noImg'" alt=''>
+          </div>
+          <ion-label>
+            <p>{{ tea.name }}</p>
+            <span class="badge">{{ tea.origin }}</span>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+    <ng-template #noTeas>
+      <p class="hint">Aucun thé se trouve dans cette catégorie.</p>
+    </ng-template>
   </ng-container>
+  <ng-template #loading>
+    <ion-spinner color="primary" name="circles"></ion-spinner>
+  </ng-template>
 
 </ion-content>

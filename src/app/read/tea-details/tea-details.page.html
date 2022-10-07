@@ -1,17 +1,21 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot='start'>
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ teaDetail.name }}</ion-title>
-  </ion-toolbar>
+  <ion-button [routerLink]="['/tabs/read']" color="primary" fill="clear" size="large" shape="round">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </ion-button>
 </ion-header>
 
 <ion-content>
   <div class='tea-image'>
-    <img [src]="teaDetail.imageUrl ? teaDetail.imageUrl : 'assets/icon/white_tea.svg'"
-      [class]="teaDetail.imageUrl ? '' : 'noImg'" alt=''>
+    <img *ngIf="teaDetail.imageUrl" [src]="teaDetail.imageUrl" alt=''>
   </div>
-  <p [innerHTML]="teaDetail.description"></p>
+  <div class="tea-info">
+    <div class='title'>
+      <h1>{{ teaDetail.name }}</h1>
+      <span class="badge cat">{{ teaDetail.category }}</span>
+      <span class="badge origin">{{ teaDetail.origin }}</span>
+    </div>
+    <p [innerHTML]="teaDetail.description"></p>
+  </div>
+
 
 </ion-content>

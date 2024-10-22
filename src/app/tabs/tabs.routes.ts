@@ -7,30 +7,52 @@ export const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadComponent: () =>
-          import('../tab1/tab1.page').then((m) => m.Tab1Page),
+        path: 'brew',
+        children: [
+          { path: '',
+            loadComponent: () => import('../brew/brew.page').then(m => m.BrewPage)
+          },
+        ]
       },
       {
-        path: 'tab2',
-        loadComponent: () =>
-          import('../tab2/tab2.page').then((m) => m.Tab2Page),
+        path: 'note',
+        children: [
+          { path: '',
+          loadComponent: () => import('../note/note.page').then(m => m.NotePage)
+          },
+/*           {
+            path: 'detail/:id',
+            loadComponent: () => import('../note/note-details/note-details.module').then(m => m.NoteDetailsPageModule)
+          } */
+        ]
       },
+/*       {
+        path: 'read',
+        children: [
+          {
+            path: '',
+            loadComponent: () => import('../read/read.module').then(m => m.ReadPageModule)
+          },
+          {
+            path: 'detail',
+            loadComponent: () => import('../read/tea-details/tea-details.module').then(m => m.TeaDetailsPageModule)
+          }
+        ]
+      }, */
       {
-        path: 'tab3',
-        loadComponent: () =>
-          import('../tab3/tab3.page').then((m) => m.Tab3Page),
+        path: 'more',
+        loadComponent: () => import('../more/more.page').then(m => m.MorePage)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full',
-      },
-    ],
+        redirectTo: '/tabs/brew',
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/brew',
     pathMatch: 'full',
   },
 ];

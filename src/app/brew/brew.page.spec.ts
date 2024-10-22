@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrewPage } from './brew.page';
 
-import { Tab1Page } from './tab1.page';
+describe('BrewPage', () => {
+  let component: BrewPage;
+  let fixture: ComponentFixture<BrewPage>;
 
-describe('Tab1Page', () => {
-  let component: Tab1Page;
-  let fixture: ComponentFixture<Tab1Page>;
-
-  beforeEach(async () => {
-    fixture = TestBed.createComponent(Tab1Page);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BrewPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

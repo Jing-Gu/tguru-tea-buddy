@@ -1,0 +1,7 @@
+{
+  "name": "tguru-tea-buddy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

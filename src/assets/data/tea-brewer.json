@@ -1,0 +1,109 @@
+[
+  {
+    "id": 0,
+    "name": "white",
+    "label": "Thé Blanc",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 70,
+    "brewTime": 10,
+    "level": "1",
+    "icon": "white_tea.svg",
+    "contentfulTag": "whiteTea"
+  },
+  {
+    "id": 1,
+    "name": "yellow",
+    "label": "Thé Jaune",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 70,
+    "brewTime": 10,
+    "level": "1",
+    "icon": "yellow_tea.svg",
+    "contentfulTag": "yellowTea"
+  },
+  {
+    "id": 2,
+    "name": "green",
+    "label": "Thé Vert",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 70,
+    "brewTime": 10,
+    "level": "2",
+    "icon": "green_tea.svg",
+    "contentfulTag": "greenTea"
+  },
+  {
+    "id": 3,
+    "name": "oolong",
+    "label": "Thé Wulong",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 90,
+    "brewTime": 60,
+    "level": "2",
+    "icon": "oolong_tea.svg",
+    "contentfulTag": "oolong"
+  },
+  {
+    "id": 4,
+    "name": "sheng-puerh",
+    "label": "Thé Puerh Sheng",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 100,
+    "brewTime": 35,
+    "level": "2",
+    "icon": "pu_er_tea.svg",
+    "contentfulTag": "puerhSheng"
+  },
+  {
+    "id": 5,
+    "name": "shou-puerh",
+    "label": "Thé Puerh Shou",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 100,
+    "brewTime": 105,
+    "level": "3",
+    "icon": "pu_er_tea.svg",
+    "contentfulTag": "puerhShou"
+  },
+  {
+    "id": 6,
+    "name": "red-black",
+    "label": "Thé Rouge-Noir",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 90,
+    "brewTime": 90,
+    "level": "3",
+    "icon": "black_tea.svg",
+    "contentfulTag": "blackRedTea"
+  },
+  {
+    "id":7,
+    "name": "herbal",
+    "label": "Tisane",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 90,
+    "brewTime": 120,
+    "level": "3",
+    "icon": "herbal_tea.svg",
+    "contentfulTag": "herbal"
+  },
+  {
+    "id": 8,
+    "name": "customize",
+    "label": "Minuterie Manuelle",
+    "teaAmount": 0,
+    "waterAmount": 0,
+    "temperature": 0,
+    "brewTime": 0,
+    "level": "0",
+    "icon": "customize.svg"
+  }
+]

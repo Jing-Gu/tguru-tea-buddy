@@ -1,0 +1,8 @@
+<ng-container *ngIf="brewList$ | async as brewList; else loading">
+  <ng-container *ngFor="let brew of brewList">
+    <h2>{{brew.label}}</h2>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

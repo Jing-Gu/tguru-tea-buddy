@@ -1,33 +1,19 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+@import "variables";
+
 :root {
-  --sencha: #2E4A33;
-  --grass: #BEBB80;
-  --cream: #F4EFE0;
-  --beige: #E3C9B0;
-  --hojicha: #B17F5E;
-
-  --bright-green: #8CB120;
-  --medium-green: #05704E;
-  --dark-navy: #042E33;
-  --bright-yellow: #F5CE12;
-  --light-yellow: #EFEFCD;
-  --grey-300: #D8DAE1;
-  --grey-500: #92949c;
-  --grey-700:#494F70;
-  --offwhite: #FBFBFB;
-
   /** primary **/
-  --ion-color-primary: var(--bright-green);
-  --ion-color-primary-contrast: var(--light-yellow);
-  --ion-color-primary-shade: #739817;
-  --ion-color-primary-tint: #D0E775;
+  --ion-color-primary: var(--sencha);
+  --ion-color-primary-contrast: var(--almond);
+  --ion-color-primary-shade: #173522;
+  --ion-color-primary-tint: #68926C;
 
   /** secondary **/
-  --ion-color-secondary: var(--bright-yellow);
-  --ion-color-secondary-contrast: var(--dark-navy);
-  --ion-color-secondary-shade: #D2AD0D;
-  --ion-color-secondary-tint: #FCE86F;
+  --ion-color-secondary: var(--bencha);
+  --ion-color-secondary-contrast: var(--sencha);
+  --ion-color-secondary-shade: #888440;
+  --ion-color-secondary-tint: #EBE9BD;
 
   /** tertiary **/
   --ion-color-tertiary: var(--medium-green);
@@ -56,7 +42,7 @@
   --ion-color-danger-tint: #FFA981;
 
   /** dark **/
-  --ion-color-dark: var(--dark-navy);
+  --ion-color-dark: var(--charcoal);
   --ion-color-dark-contrast: var(--light-yellow);
 
   /** medium **/
@@ -76,8 +62,8 @@
   --ion-color-light-tint: #f5f6f9;
 
   /** general **/
-  --ion-text-color: var(--dark-navy);
-  --ion-background-color: var(--offwhite);
+  --ion-text-color: var(--charcoal);
+  --ion-background-color: var(--almond);
   --ion-toolbar-background: #fff;
-  --ion-tab-bar-background: #fff;
+  --ion-tab-bar-background: var(--bencha);
 }

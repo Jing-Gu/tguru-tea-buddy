@@ -12,18 +12,6 @@
     "contentfulTag": "whiteTea"
   },
   {
-    "id": 1,
-    "name": "yellow",
-    "label": "Thé Jaune",
-    "teaAmount": 5,
-    "waterAmount": 250,
-    "temperature": 70,
-    "brewTime": 10,
-    "level": "1",
-    "icon": "yellow_tea.svg",
-    "contentfulTag": "yellowTea"
-  },
-  {
     "id": 2,
     "name": "green",
     "label": "Thé Vert",
@@ -56,7 +44,7 @@
     "temperature": 100,
     "brewTime": 35,
     "level": "2",
-    "icon": "pu_er_tea.svg",
+    "icon": "pu_er_sheng.svg",
     "contentfulTag": "puerhSheng"
   },
   {
@@ -68,7 +56,7 @@
     "temperature": 100,
     "brewTime": 105,
     "level": "3",
-    "icon": "pu_er_tea.svg",
+    "icon": "pu_er_shou.svg",
     "contentfulTag": "puerhShou"
   },
   {

@@ -21,4 +21,9 @@ export class BrewSimpleComponent  implements OnInit {
     this._brewService.getSimpleBrewList().subscribe(s => console.log('li', s))
   }
 
+  goToTimer(tea: any) {
+    //this.timerService.cancelTimer.next(false);
+    //this.currentTea = tea;
+  }
+
 }

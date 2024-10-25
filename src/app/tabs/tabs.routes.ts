@@ -10,7 +10,7 @@ export const routes: Routes = [
         path: 'brew',
         children: [
           { path: '',
-            loadComponent: () => import('../brew/brew.page').then(m => m.BrewPage)
+            loadChildren: () => import('../brew/brew.routes').then(r => r.brewRoutes)
           },
         ]
       },

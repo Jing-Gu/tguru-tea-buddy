@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrewService } from 'src/app/services/brew.service'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'tguru-brew-simple',
@@ -14,6 +15,8 @@ export class BrewSimpleComponent  implements OnInit {
   constructor() { }
 
   private _brewService = inject(BrewService);
+  private _router = inject(Router);
+  private _route = inject(ActivatedRoute);
 
   protected brewList$ = this._brewService.getSimpleBrewList();
 
@@ -22,7 +25,8 @@ export class BrewSimpleComponent  implements OnInit {
   }
 
   goToTimer(tea: any) {
-    //this.timerService.cancelTimer.next(false);
+    this._router.navigate([tea.name], { relativeTo: this._route });
+    this._brewService.setCurrentTea(tea);
     //this.currentTea = tea;
   }
 

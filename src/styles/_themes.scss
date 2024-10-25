@@ -61,9 +61,17 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+
+}
+
+.md body, .ios body {
   /** general **/
   --ion-text-color: var(--charcoal);
+  --ion-text-color-rgb: 51,51,51;
   --ion-background-color: var(--almond);
-  --ion-toolbar-background: #fff;
+  --ion-background-color-rgb: 244,239,224;
+  --ion-toolbar-background: var(--almond);;
   --ion-tab-bar-background: var(--bencha);
 }
+
+

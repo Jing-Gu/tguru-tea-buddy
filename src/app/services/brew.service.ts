@@ -8,6 +8,15 @@ import { Observable } from 'rxjs'
 export class BrewService {
 
   private _http = inject(HttpClient);
+  private _tea: any;
+
+  setCurrentTea(tea: any) {
+    this._tea = tea;
+  }
+
+  getCurrentTea() {
+    return this._tea;
+  }
 
 
   getSimpleBrewList(): Observable<any[]> {

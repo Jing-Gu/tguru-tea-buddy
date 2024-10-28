@@ -1,0 +1,42 @@
+
+
+ion-icon {
+  padding: .5rem;
+  border-radius: 50px;
+  background-color: var(--bencha);
+  color: var(--sencha);
+  width: 26px;
+  height: 26px;
+}
+
+.countdown{
+  ::ng-deep{
+    ngx-gauge {
+      left: 50%;
+      transform: translateX(-50%);
+      ngx-gauge-label {
+        display: inline-block;
+        width: 80px;
+      }
+      .reading-block {
+        display: none !important;
+      }
+      .reading-label {
+        top: 50%;
+        transform: translateY(-50%) !important;
+      }
+    }
+  }
+}
+
+ion-button {
+  height: auto;
+  margin: 0 4rem 1rem 4rem;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+ion-button::part(native) {
+  box-shadow: none;
+  padding: 1rem 2rem;
+}

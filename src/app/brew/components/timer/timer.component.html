@@ -1,3 +1,33 @@
-<p>
-  timer works!
-</p>
+<div class='p-4 flex flex-col gap-6'>
+  <div class="flex flex-row justify-between">
+    <div>
+      <ion-icon name="leaf-outline"></ion-icon>
+      <p>{{tea?.teaAmount}}<span>&nbsp;</span><span>g</span></p>
+    </div>
+    <div>
+      <ion-icon name="water-outline"></ion-icon>
+      <p>{{tea?.waterAmount}}<span>&nbsp;</span><span>ml</span></p>
+    </div>
+    <div>
+      <ion-icon name="thermometer-outline"></ion-icon>
+      <p>{{tea?.temperature}}<span>&nbsp;</span><span>˚C</span></p>
+    </div>
+  </div>
+  <h1 class="text-xl font-bold text-center text-sencha">{{tea?.label}}</h1>
+  <div class='countdown'>
+    <ngx-gauge type='full' cap='round' [size]='220' [thick]='10'
+      foregroundColor='#2E4A33' backgroundColor='#BEBB80' [value]='gaugePercent'>
+      <ngx-gauge-label>
+        <img src='assets/icon/{{tea?.icon}}' class='teacup-icon' alt=''>
+      </ngx-gauge-label>
+    </ngx-gauge>
+    <p class='text-6xl font-bold text-center text-sencha'>{{ brewingTime ? brewingTime : "_ _ : _ _" }}</p>
+  </div>
+  <ion-button color='primary' expand='block' shape='round' (click)='startTimer()'>
+    Commencer
+  </ion-button>
+  <ion-button color='primary' expand='block' shape='round' fill='outline' routerLink="../">
+    Annuler
+  </ion-button>
+</div>
+

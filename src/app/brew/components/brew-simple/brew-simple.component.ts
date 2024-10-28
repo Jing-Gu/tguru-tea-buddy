@@ -27,7 +27,6 @@ export class BrewSimpleComponent  implements OnInit {
   goToTimer(tea: any) {
     this._router.navigate([tea.name], { relativeTo: this._route });
     this._brewService.setCurrentTea(tea);
-    //this.currentTea = tea;
   }
 
 }

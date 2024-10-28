@@ -1,6 +1,6 @@
 <ng-container *ngIf="brewList$ | async as brewList; else loading">
   <div class="tiles">
-    <button *ngFor="let tea of brewList" (click)='goToTimer(tea)'>
+    <button *ngFor="let tea of brewList" nav-transition="slide-left-right" (click)='goToTimer(tea)'>
         <img src='assets/icon/{{tea.icon}}' alt=''>
         <span>{{tea.label}}</span>
     </button>

@@ -82,16 +82,5 @@
     "level": "3",
     "icon": "herbal_tea.svg",
     "contentfulTag": "herbal"
-  },
-  {
-    "id": 8,
-    "name": "customize",
-    "label": "Minuterie Manuelle",
-    "teaAmount": 0,
-    "waterAmount": 0,
-    "temperature": 0,
-    "brewTime": 0,
-    "level": "0",
-    "icon": "customize.svg"
   }
 ]

@@ -16,22 +16,28 @@ ion-icon {
       transform: translateX(-50%);
       ngx-gauge-label {
         display: inline-block;
-        width: 80px;
+        width: 100px;
+        height: 100px;
       }
       .reading-block {
         display: none !important;
       }
       .reading-label {
         top: 50%;
+        left: 0;
         transform: translateY(-50%) !important;
       }
     }
+  }
+  .tea-icon {
+    width: 100px;
+    height: 100px;
   }
 }
 
 ion-button {
   height: auto;
-  margin: 0 4rem 1rem 4rem;
+  margin: 0 3rem;
   text-transform: capitalize;
   font-size: 1rem;
 }

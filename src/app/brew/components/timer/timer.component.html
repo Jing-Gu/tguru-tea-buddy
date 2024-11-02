@@ -1,5 +1,5 @@
-<div class='p-4 flex flex-col gap-6'>
-  <div class="flex flex-row justify-between">
+<div class='h-full p-4 flex flex-col justify-between'>
+  <div class="flex flex-row justify-between px-4">
     <div>
       <ion-icon name="leaf-outline"></ion-icon>
       <p>{{tea?.teaAmount}}<span>&nbsp;</span><span>g</span></p>
@@ -18,16 +18,25 @@
     <ngx-gauge type='full' cap='round' [size]='220' [thick]='10'
       foregroundColor='#2E4A33' backgroundColor='#BEBB80' [value]='gaugePercent'>
       <ngx-gauge-label>
-        <img src='assets/icon/{{tea?.icon}}' class='teacup-icon' alt=''>
+        <img src='assets/icon/{{tea?.icon}}' class='tea-icon' alt=''>
       </ngx-gauge-label>
     </ngx-gauge>
     <p class='text-6xl font-bold text-center text-sencha'>{{ brewingTime ? brewingTime : "_ _ : _ _" }}</p>
   </div>
-  <ion-button color='primary' expand='block' shape='round' (click)='startTimer()'>
-    Commencer
-  </ion-button>
-  <ion-button color='primary' expand='block' shape='round' fill='outline' routerLink="../">
-    Annuler
-  </ion-button>
+  <div class="flex flex-col gap-4">
+    <ng-container *ngIf='timerIsOff; else timerIsOn'>
+      <ion-button color='primary' expand='block' shape='round' (click)='startTimer()'>
+        Commencer
+      </ion-button>
+    </ng-container>
+    <ng-template #timerIsOn>
+      <ion-button color='secondary' expand='block' shape='round' (click)='resetTimer()'>
+        Reset
+      </ion-button>
+    </ng-template>
+    <ion-button color='primary' expand='block' shape='round' fill='outline' routerLink="../">
+      Annuler
+    </ion-button>
+  </div>
 </div>
 

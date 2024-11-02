@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { IonIcon, IonButton, } from '@ionic/angular/standalone';
 import { leafOutline, waterOutline, thermometerOutline } from 'ionicons/icons';
@@ -11,19 +12,19 @@ import { BrewService } from 'src/app/services/brew.service'
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
   standalone: true,
-  imports: [RouterLink, IonIcon, IonButton, NgxGaugeModule]
+  imports: [CommonModule, RouterLink, IonIcon, IonButton, NgxGaugeModule]
 })
 export class TimerComponent  implements OnInit {
-
-  brewingTimeDefault: string = '';
-  brewingTime: string = '';
-  gaugePercent = 0;
+  private _brewService = inject(BrewService);
+  protected tea: any;
+  protected brewingTime: string = '';
+  protected gaugePercent = 0;
+  protected timerIsOff = true;
 
   constructor() {
     addIcons({leafOutline, waterOutline, thermometerOutline});
   }
-  private _brewService = inject(BrewService);
-  tea: any;
+
 
   ngOnInit() {
     this.tea = this._brewService.getCurrentTea();
@@ -31,7 +32,7 @@ export class TimerComponent  implements OnInit {
     this.checkDefaultBrewTime(this.tea.brewTime)
   }
 
-  checkDefaultBrewTime(brewSecondsDefault: number) {
+  private checkDefaultBrewTime(brewSecondsDefault: number) {
     let brewMinutes;
     let brewSeconds;
     if (brewSecondsDefault < 60) {
@@ -42,12 +43,15 @@ export class TimerComponent  implements OnInit {
       brewSeconds = brewSecondsDefault % 60;
     }
     // eslint-disable-next-line max-len
-    this.brewingTimeDefault = `${brewMinutes < 1 ? '0' : ''}${brewMinutes}:${brewSeconds < 10 ? '0' : ''}${brewSeconds}`;
-    this.brewingTime = this.brewingTimeDefault;
+    this.brewingTime = `${brewMinutes < 1 ? '0' : ''}${brewMinutes}:${brewSeconds < 10 ? '0' : ''}${brewSeconds}`;
   }
 
-  startTimer() {
+  protected startTimer() {
+    this.timerIsOff = false;
+  }
 
+  protected resetTimer() {
+    this.timerIsOff = true;
   }
 
 }

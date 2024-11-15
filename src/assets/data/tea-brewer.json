@@ -44,7 +44,7 @@
     "temperature": 100,
     "brewTime": 35,
     "level": "2",
-    "icon": "pu_er_sheng.svg",
+    "icon": "pu_er.svg",
     "contentfulTag": "puerhSheng"
   },
   {
@@ -56,7 +56,7 @@
     "temperature": 100,
     "brewTime": 105,
     "level": "3",
-    "icon": "pu_er_shou.svg",
+    "icon": "pu_er.svg",
     "contentfulTag": "puerhShou"
   },
   {

@@ -14,29 +14,29 @@
     </div>
   </div>
   <h1 class="text-xl font-bold text-center text-sencha">{{tea?.label}}</h1>
-  <div class='countdown'>
-    <ngx-gauge type='full' cap='round' [size]='220' [thick]='10'
-      foregroundColor='#2E4A33' backgroundColor='#BEBB80' [value]='gaugePercent'>
-      <ngx-gauge-label>
-        <img src='assets/icon/{{tea?.icon}}' class='tea-icon' alt=''>
-      </ngx-gauge-label>
-    </ngx-gauge>
-    <p class='text-6xl font-bold text-center text-sencha'>{{ brewingTime ? brewingTime : "_ _ : _ _" }}</p>
+  <div class='flex flex-col items-center gap-4'>
+    <span class="loader" [ngClass]="{'animate': isAnimating}">
+      <img src='assets/icon/{{tea?.icon}}' alt=''>
+    </span>
+    <p class='text-6xl font-bold text-center text-sencha'>
+      {{ brewingTime ? brewingTime : "_ _ : _ _" }}
+    </p>
   </div>
   <div class="flex flex-col gap-4">
-    <ng-container *ngIf='timerIsOff; else timerIsOn'>
-      <ion-button color='primary' expand='block' shape='round' (click)='startTimer()'>
-        Commencer
-      </ion-button>
-    </ng-container>
-    <ng-template #timerIsOn>
-      <ion-button color='secondary' expand='block' shape='round' (click)='resetTimer()'>
-        Reset
-      </ion-button>
-    </ng-template>
-    <ion-button color='primary' expand='block' shape='round' fill='outline' routerLink="../">
+    @if(timerIsOff) {
+    <ion-button color='primary' expand='block' shape='round' (click)="startTimer()">
+      Commencer
+    </ion-button>
+    } @else {
+    <ion-button color='secondary' expand='block' shape='round' (click)="resetTimer()">
+      Reset
+    </ion-button>
+    }
+    <ion-button color='primary' expand='block' shape='round' fill='outline' (click)="cancelTimer()">
       Annuler
     </ion-button>
   </div>
 </div>
 
+<ion-alert [isOpen]="isAlertOpen" header="Your tea is ready!" [buttons]="['OK']"
+  (didDismiss)="setOpen(false)"></ion-alert>

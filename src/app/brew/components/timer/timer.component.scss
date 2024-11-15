@@ -1,5 +1,3 @@
-
-
 ion-icon {
   padding: .5rem;
   border-radius: 50px;
@@ -7,32 +5,6 @@ ion-icon {
   color: var(--sencha);
   width: 26px;
   height: 26px;
-}
-
-.countdown{
-  ::ng-deep{
-    ngx-gauge {
-      left: 50%;
-      transform: translateX(-50%);
-      ngx-gauge-label {
-        display: inline-block;
-        width: 100px;
-        height: 100px;
-      }
-      .reading-block {
-        display: none !important;
-      }
-      .reading-label {
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%) !important;
-      }
-    }
-  }
-  .tea-icon {
-    width: 100px;
-    height: 100px;
-  }
 }
 
 ion-button {
@@ -46,3 +18,57 @@ ion-button::part(native) {
   box-shadow: none;
   padding: 1rem 2rem;
 }
+
+.loader {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+}
+
+.loader::after,
+.loader::before {
+  content: '';  
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #2E4A33;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.loader::after {
+  animation-delay: 1s;
+}
+
+.loader.animate::before {
+  border: 6px solid #2E4A33;
+  animation: animloader 2s linear infinite;
+}
+
+.loader.animate::after {
+  background: #2E4A33;
+  animation: animloader 3s linear infinite;
+}
+
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+    

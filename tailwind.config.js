@@ -5,14 +5,15 @@ module.exports = {
   ],
   theme: {
     fill: {
-      current: 'currentColor',
+      current: "currentColor",
     },
     colors: {
-      'sencha': '#2E4A33',
-      'bencha': '#BEBB80',
-      'almond': '#F4EFE0',
-      'earlgrey': '#E3C9B0',
-      'charcoal': '#333333'
+      sencha: "#2E4A33",
+      bencha: "#BEBB80",
+      almond: "#F4EFE0",
+      earlgrey: "#E3C9B0",
+      hojicha: "#B17F5E",
+      charcoal: "#333333"
     },
     extend: {},
   },

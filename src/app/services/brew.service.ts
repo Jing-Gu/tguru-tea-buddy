@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs'
+import { Tea } from '../interface/tea.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ import { Observable } from 'rxjs'
 export class BrewService {
 
   private _http = inject(HttpClient);
-  private _tea: any;
+  private _tea: Tea | undefined;
 
-  setCurrentTea(tea: any) {
+  setCurrentTea(tea: Tea) {
     this._tea = tea;
   }
 
@@ -19,7 +20,7 @@ export class BrewService {
   }
 
 
-  getSimpleBrewList(): Observable<any[]> {
-    return this._http.get<any[]>('../../assets/data/tea-brewer.json');
+  getSimpleBrewList(): Observable<Tea[]> {
+    return this._http.get<Tea[]>('../../assets/data/tea-brewer.json');
   }
 }

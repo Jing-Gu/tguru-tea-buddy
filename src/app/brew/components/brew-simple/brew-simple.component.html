@@ -1,12 +1,13 @@
-<ng-container *ngIf="brewList$ | async as brewList; else loading">
-  <div class="tiles">
-    <button *ngFor="let tea of brewList" nav-transition="slide-left-right" (click)='goToTimer(tea)'>
-        <img src='assets/icon/{{tea.icon}}' alt=''>
-        <span>{{tea.label}}</span>
+@if(brewList$ | async; as brewList) {
+<div class="tiles">
+  @for(tea of brewList; track tea.id) {
+    <button class="border-solid border-2 border-sencha" nav-transition="slide-left-right" (click)='goToTimer(tea)'>
+      <img src='assets/icon/{{tea.icon}}' alt=''>
+      <span class="text-sm w-full p-3 text-sencha border-t-2 border-sencha">{{tea.label}}</span>
     </button>
-  </div>
-
-</ng-container>
-<ng-template #loading>
-  <p>Loading...</p>
-</ng-template>
+  }
+</div>
+} @else {
+<p>Loading...</p> 
+<!-- TODO: Add a spinner here -->
+}

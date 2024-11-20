@@ -41,7 +41,7 @@ ion-button::part(native) {
   height: 200px;
   border-radius: 50%;
   background: transparent;
-  border: 2px solid #2E4A33;
+  border: 2px solid var(--bencha);
   position: absolute;
   left: 0;
   top: 0;
@@ -51,12 +51,12 @@ ion-button::part(native) {
 }
 
 .loader.animate::before {
-  border: 6px solid #2E4A33;
+  border: 6px solid var(--sencha);
   animation: animloader 2s linear infinite;
 }
 
 .loader.animate::after {
-  background: #2E4A33;
+  background: var(--sencha);
   animation: animloader 3s linear infinite;
 }
 

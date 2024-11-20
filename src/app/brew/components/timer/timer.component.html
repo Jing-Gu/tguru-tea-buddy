@@ -1,16 +1,16 @@
 <div class='h-full p-4 flex flex-col justify-between'>
   <div class="flex flex-row justify-between px-4">
-    <div>
+    <div class="flex flex-col items-center gap-2">
       <ion-icon name="leaf-outline"></ion-icon>
-      <p>{{tea?.teaAmount}}<span>&nbsp;</span><span>g</span></p>
+      <p>{{tea?.teaAmount}}<span class="ml-2">g</span></p>
     </div>
-    <div>
+    <div class="flex flex-col items-center gap-2">
       <ion-icon name="water-outline"></ion-icon>
-      <p>{{tea?.waterAmount}}<span>&nbsp;</span><span>ml</span></p>
+      <p>{{tea?.waterAmount}}<span class="ml-2">ml</span></p>
     </div>
-    <div>
+    <div class="flex flex-col items-center gap-2">
       <ion-icon name="thermometer-outline"></ion-icon>
-      <p>{{tea?.temperature}}<span>&nbsp;</span><span>˚C</span></p>
+      <p>{{tea?.temperature}}<span class="ml-2">˚C</span></p>
     </div>
   </div>
   <h1 class="text-xl font-bold text-center text-sencha">{{tea?.label}}</h1>

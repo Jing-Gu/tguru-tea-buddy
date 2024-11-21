@@ -8,7 +8,7 @@ import { Device } from '@capacitor/device';
 import { Share } from '@capacitor/share';
 
 @Component({
-  selector: 'tguru-more',
+  selector: 'app-more',
   templateUrl: './more.page.html',
   styleUrls: ['./more.page.scss'],
   standalone: true,

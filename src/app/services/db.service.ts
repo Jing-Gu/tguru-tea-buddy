@@ -6,7 +6,7 @@ import { Note } from '../interface/note.interface';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: null
 })
 export class DbService {
   private db!: SQLiteDBConnection;

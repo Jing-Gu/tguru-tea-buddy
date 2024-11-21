@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Tea } from 'src/app/interface/tea.interface';
 
 @Component({
-  selector: 'tguru-brew-simple',
+  selector: 'app-brew-simple',
   templateUrl: './brew-simple.component.html',
   styleUrls: ['./brew-simple.component.scss'],
   standalone: true,

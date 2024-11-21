@@ -43,16 +43,17 @@ export class SqliteService {
         .createConnection(dbName, encrypted, mode, version, readonly);
     }
     await db.open();
-    // const sql = `CREATE TABLE IF NOT EXISTS ${dbName} (
-    //   id TEXT PRIMARY KEY, 
-    //   title TEXT, 
-    //   content TEXT, 
-    //   pinned INTEGER, 
-    //   created TEXT, 
-    //   modified TEXT);`;
-    // await db.run(sql);
+    const sql = `CREATE TABLE IF NOT EXISTS ${dbName} (
+      id TEXT PRIMARY KEY,
+      title TEXT,
+      content TEXT,
+      pinned INTEGER,
+      created TEXT,
+      modified TEXT);`;
+    await db.execute(sql);
     return db;
   }
+
   async retrieveConnection(dbName: string, readonly: boolean): Promise<SQLiteDBConnection> {
     return await this.sqliteConnection.retrieveConnection(dbName, readonly);
   }

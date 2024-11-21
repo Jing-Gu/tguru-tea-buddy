@@ -1,8 +1,8 @@
 export interface Note {
-    id: string;
+    uuid: string;
     title: string;
     content: string;
-    pinned: number; // 0 = not pinned, 1 = pinned
-    created: string;
-    modified: string;
+    pinned: boolean;
+    created: Date;
+    modified: Date;
 }

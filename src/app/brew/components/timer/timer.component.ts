@@ -7,7 +7,7 @@ import { addIcons } from 'ionicons'
 import { BrewService } from 'src/app/services/brew.service'
 
 @Component({
-  selector: 'tguru-timer',
+  selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
   standalone: true,
@@ -17,10 +17,10 @@ export class TimerComponent  implements OnInit {
   private _brewService = inject(BrewService);
   private _router = inject(Router);
 
-  // to store the identifier returned by the setInterval function. 
+  // to store the identifier returned by the setInterval function.
   // This identifier is necessary to clear the interval later using clearInterval
   // This allows you to stop the timer when the countdown reaches zero or when you need to reset the timer.
-  private _interval: any; 
+  private _interval: any;
 
   protected tea: any;
   protected brewingTime: string = '';

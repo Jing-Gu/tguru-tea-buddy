@@ -2,20 +2,21 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormsModule, Validators, FormBuilder } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonTextarea, IonList, IonFab, IonFabButton, IonIcon, 
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonTextarea, IonList, IonFab, IonFabButton, IonIcon,
   IonModal, IonButtons, IonButton, AlertController, IonItemOptions, IonItemOption, IonItemSliding } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { createOutline, chevronBackOutline, saveOutline, starOutline, star , trash, fileTrayOutline } from 'ionicons/icons';
 import { v4 as uuidv4 } from 'uuid';
-import { DbService } from 'src/app/services/db.service';
+import { StorageService } from 'src/app/services/storage.service'
+
 
 @Component({
-  selector: 'tguru-note-list',
+  selector: 'app-note-list',
   templateUrl: './note-list.component.html',
   styleUrls: ['./note-list.component.scss'],
   standalone: true,
   imports: [
-    CommonModule, RouterLink, FormsModule, ReactiveFormsModule, 
+    CommonModule, RouterLink, FormsModule, ReactiveFormsModule,
     IonItemSliding, IonItemOption, IonItemOptions, IonButtons, IonButton,
     IonModal, IonIcon, IonFabButton, IonFab, IonList, IonLabel, IonTextarea, IonItem, IonContent, IonHeader, IonTitle, IonToolbar
   ]
@@ -23,13 +24,13 @@ import { DbService } from 'src/app/services/db.service';
 export class NoteListComponent  implements OnInit {
   private alertController = inject(AlertController);
   private fb = inject(FormBuilder);
-  private dbService = inject(DbService);
+  private storageService = inject(StorageService);
 
   protected isModalOpen = false;
   protected pinned = false;
   protected noteForm: FormGroup | undefined;
 
-  protected notes$ = this.dbService.noteListObs;
+  protected notes$ = this.storageService.noteListObs;
 
   dummyMemos = [
     {
@@ -77,16 +78,17 @@ export class NoteListComponent  implements OnInit {
   ];
 
   constructor() {
-    addIcons({createOutline, chevronBackOutline, starOutline, star, 
+    addIcons({createOutline, chevronBackOutline, starOutline, star,
       saveOutline, trash, fileTrayOutline});
   }
 
   ngOnInit() {
+    this.storageService.getAllNotes();
     this.noteForm = this.fb.group({
-      id: [''],
+      uuid: [''],
       title: [''],
       content: ['', Validators.required],
-      pinned: 0,
+      pinned: false,
       created: [''],
       modified: [''],
     });
@@ -94,15 +96,17 @@ export class NoteListComponent  implements OnInit {
 
   protected submitNote() {
     if (this.noteForm && this.noteForm.valid) {
-      const currentTime = new Date().toISOString();
+      const currentTime = new Date();
       this.noteForm.patchValue({
-        id: uuidv4(),
+        uuid: uuidv4(),
         created: currentTime,
         modified: currentTime
       });
 
       console.log(this.noteForm.value);
-      this.dbService.addNote(this.noteForm.value);
+      this.storageService.addNote(this.noteForm.value);
+      this.storageService.getAllNotes();
+      this.notes$ = this.storageService.noteListObs;
       this.isModalOpen = false;
       this.noteForm.reset();
     }

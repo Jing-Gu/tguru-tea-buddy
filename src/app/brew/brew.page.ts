@@ -4,7 +4,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 import { BrewSimpleComponent } from './components/brew-simple/brew-simple.component';
 
 @Component({
-  selector: 'tguru-brew',
+  selector: 'app-brew',
   templateUrl: './brew.page.html',
   styleUrls: ['./brew.page.scss'],
   standalone: true,

@@ -3,17 +3,16 @@ import { CommonModule } from '@angular/common';
 import { BrewService } from 'src/app/services/brew.service'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Tea } from 'src/app/interface/tea.interface';
+import { IonProgressBar } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-brew-simple',
   templateUrl: './brew-simple.component.html',
   styleUrls: ['./brew-simple.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [IonProgressBar, CommonModule]
 })
-export class BrewSimpleComponent  implements OnInit {
-
-  constructor() { }
+export class BrewSimpleComponent {
 
   private _brewService = inject(BrewService);
   private _router = inject(Router);
@@ -21,9 +20,6 @@ export class BrewSimpleComponent  implements OnInit {
 
   protected brewList$ = this._brewService.getSimpleBrewList();
 
-  ngOnInit() {
-    this._brewService.getSimpleBrewList().subscribe(s => console.log('li', s))
-  }
 
   goToTimer(tea: Tea) {
     this._router.navigate([tea.name], { relativeTo: this._route });

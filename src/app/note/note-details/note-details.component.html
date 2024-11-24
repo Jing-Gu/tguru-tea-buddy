@@ -1,3 +1,35 @@
-<p>
-  note-details works!
-</p>
+@if(currentNote$ | async; as currentNote) {
+  <form [formGroup]="noteForm" class="h-full flex flex-col overflow-hidden">
+    <ion-header mode="md" class="ion-no-border">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="tabs/note" icon="chevron-back-outline"
+            (click)="updateNote(currentNote.uuid)">
+          </ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button (click)="onToggleBookmark()">
+            <ion-icon [name]="pinned ? 'star' : 'star-outline'"
+              color="primary" />
+          </ion-button>
+          <ion-button (click)="onDeleteNote(currentNote.uuid)">
+            <ion-icon name="trash-outline" color="danger" />
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="flex-1 flex flex-col overflow-auto px-8">
+      <ion-textarea autoGrow="true" class="font-semibold text-xl flex-shrink-0" formControlName="title"></ion-textarea>
+      <ion-textarea autoGrow="true" class="flex-shrink-0" formControlName="content"></ion-textarea>
+
+      <div class="text-xs text-bencha my-4">
+        <p>Créé: <span>{{currentNote.created | date: 'MM/dd/yyyy'}}</span></p>
+        @if(currentNote.modified) {
+        <p>Modifié: <span>{{currentNote.modified | date: 'MM/dd/yyyy'}}</span></p>
+        }
+      </div>
+    </div>
+  </form>
+}
+

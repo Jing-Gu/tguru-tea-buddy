@@ -13,6 +13,10 @@ export const routes: Routes = [
             path: '',
             loadComponent: () => import('../brew/brew.page').then(p => p.BrewPage)
           },
+          {
+            path: ':name',
+            loadComponent: () => import('../brew/components/timer/timer.component').then(c => c.TimerComponent)
+          }
         ]
       },
       {
@@ -20,10 +24,10 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            loadComponent: () => import('../note//note-list/note-list.component').then(c => c.NoteListComponent)
+            loadComponent: () => import('../note/note-list/note-list.component').then(c => c.NoteListComponent)
           },
           {
-            path: ':id',
+            path: ':uuid',
             loadComponent: () => import('../note/note-details/note-details.component').then(c => c.NoteDetailsComponent)
           }
           /*           {

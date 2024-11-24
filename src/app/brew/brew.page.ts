@@ -15,6 +15,7 @@ export class BrewPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    return
   }
 
 }

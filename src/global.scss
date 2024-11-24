@@ -44,11 +44,43 @@
 @import 'styles/_themes.scss';
 
 
+@font-face {
+  font-family: 'Inter', sans-serif;
+  src: url("assets/fonts/Inter-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter', sans-serif;
+  src: url("assets/fonts/Inter-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
 
 
 .header-md {
   box-shadow: none;
 }
+
 ion-header {
   border-bottom: 2px solid var(--charcoal);
+}
+
+
+.alertbox {
+  .alert-wrapper {
+    .alert-message {
+      color: var(--charcoal);
+    }
+
+    .alert-button-group .sc-ion-alert-md {
+      .alert-button .sc-ion-alert-md .btnconfirm {
+        color: red !important;
+        border: 1px solid red;
+      }
+    }
+
+  }
+
 }

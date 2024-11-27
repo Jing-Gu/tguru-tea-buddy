@@ -1,18 +1,18 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="brew">
+    <ion-tab-button [routerLink]="['/tabs/brew']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <ion-icon name="cafe-outline"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="note">
+    <ion-tab-button [routerLink]="['/tabs/note']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <ion-icon name="reader-outline"></ion-icon>
     </ion-tab-button>
 
-    <!-- <ion-tab-button tab="read">
+    <!-- <ion-tab-button [routerLink]="['/tabs/read']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <ion-icon name="library-outline"></ion-icon>
     </ion-tab-button> -->
 
-    <ion-tab-button tab="more">
+    <ion-tab-button [routerLink]="['/tabs/more']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>

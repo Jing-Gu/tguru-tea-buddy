@@ -30,10 +30,6 @@ export const routes: Routes = [
             path: ':uuid',
             loadComponent: () => import('../note/note-details/note-details.component').then(c => c.NoteDetailsComponent)
           }
-          /*           {
-                      path: 'detail/:id',
-                      loadComponent: () => import('../note/note-details/note-details.module').then(m => m.NoteDetailsPageModule)
-                    } */
         ]
       },
       /*       {

@@ -24,11 +24,20 @@ export class TimerComponent  implements OnInit {
 
   protected tea: any;
   protected brewingTime: string = '';
-  protected gaugePercent = 0;
   protected timerIsOff = true;
 
   protected isAlertOpen = false;
   protected isAnimating: boolean = false;
+
+  protected alertButtons = [
+    {
+      text: 'Ok',
+      role: 'cancel',
+      handler: () => {
+        this.resetTimer();
+      },
+    },
+  ];
 
   constructor() {
     addIcons({leafOutline, waterOutline, thermometerOutline});
@@ -36,7 +45,6 @@ export class TimerComponent  implements OnInit {
 
   ngOnInit() {
     this.tea = this._brewService.getCurrentTea();
-    console.log(this.tea)
     this.checkDefaultBrewTime(this.tea.brewTime)
   }
 
@@ -67,25 +75,21 @@ export class TimerComponent  implements OnInit {
     this._interval = setInterval(() => {
       timer -= 1000;
       const remainingSeconds = Math.max(0, timer / 1000);
-      this.gaugePercent = 100 - Math.floor(timer / (this.tea.brewTime * 1000) * 100);
 
       this.displayTimeLeft(remainingSeconds);
 
       if (timer <= 0) {
-        this.gaugePercent = 100;
         clearInterval(this._interval);
         this.isAlertOpen = true;
         this.isAnimating = false;
         this._playCompletionSound();
       }
-      console.log('left', remainingSeconds, '%', this.gaugePercent);
     }, 1000);
   }
 
   protected resetTimer() {
     this.timerIsOff = true;
     this.isAnimating = false;
-    this.gaugePercent = 0;
     clearInterval(this._interval);
     this.checkDefaultBrewTime(this.tea.brewTime);
   }

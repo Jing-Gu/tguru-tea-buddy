@@ -20,8 +20,8 @@ ion-button::part(native) {
 }
 
 .loader {
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   display: inline-block;
   position: relative;
   img {
@@ -35,10 +35,10 @@ ion-button::part(native) {
 
 .loader::after,
 .loader::before {
-  content: '';  
+  content: '';
   box-sizing: border-box;
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   background: transparent;
   border: 2px solid var(--bencha);
@@ -71,4 +71,3 @@ ion-button::part(native) {
     opacity: 0;
   }
 }
-    

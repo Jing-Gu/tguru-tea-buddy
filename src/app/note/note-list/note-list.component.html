@@ -8,65 +8,64 @@
   <!-- TODO: add tabs for notes and favorites -->
   <div class="h-full overflow-y-auto">
     @if(notes$ | async; as notes) {
-      @if (notes.length > 0) {
-        <ion-list>
-          <ion-item-sliding *ngFor="let note of notes">
-            <ion-item button routerLink="{{note.uuid}}" mode="ios">
-              <ion-label class="overflow-hidden">
-                <p class="!text-charcoal capitalize">{{ note.title || "Sans titre" }}</p>
-                <p class="line-clamp-2">{{ note.content }}</p>
-              </ion-label>
-            </ion-item>
-            <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="deleteNote(note.uuid)">
-                <ion-icon slot="icon-only" name="trash" color="light" />
-              </ion-item-option>
-            </ion-item-options>
-          </ion-item-sliding>
-        </ion-list>
-      } @else {
-        <div class="flex flex-col items-center gap-8 mt-[50%] mx-8">
-          <ion-icon class="w-12 h-12" name="file-tray-outline" color="secondary" />
-          <p class="text-center">Commencez à écrire votre note de thé.</p>
-        </div>
-      }
+    @if (notes.length > 0) {
+    <ion-list>
+      <ion-item-sliding *ngFor="let note of notes">
+        <ion-item button routerLink="{{note.uuid}}" mode="ios">
+          <ion-label class="overflow-hidden">
+            <p class="!text-charcoal capitalize">{{ note.title || "Sans titre" }}</p>
+            <p class="line-clamp-2">{{ note.content }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteNote(note.uuid)">
+            <ion-icon slot="icon-only" name="trash" color="light" />
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
     } @else {
-        <ion-progress-bar type="indeterminate" color="tertiary"></ion-progress-bar>
+    <div class="flex flex-col items-center gap-8 mt-[50%] mx-8">
+      <ion-icon class="w-12 h-12" name="file-tray-outline" color="secondary" />
+      <p class="text-center">Commencez à écrire votre note de thé.</p>
+    </div>
+    }
+    } @else {
+    <ion-progress-bar type="indeterminate" color="tertiary"></ion-progress-bar>
     }
   </div>
 </ion-content>
 
-@if(noteForm) {
-  <form [formGroup]="noteForm">
-    <ion-modal [isOpen]="isModalOpen">
-      <ng-template>
-        <ion-header class="ion-no-border">
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button (click)="closeModal()">
-                <ion-icon name="chevron-back-outline" />
-              </ion-button>
-            </ion-buttons>
-            <ion-buttons slot="end" class="flex gap-4">
-              <ion-button (click)="toggleBookmark()" [disabled]="!noteForm.valid" color="primary">
-                <ion-icon [name]="pinned ? 'star' : 'star-outline'" />
-              </ion-button>
-              <ion-button (click)="submitNote()" [disabled]="!noteForm.valid" color="primary">
-                <ion-icon name="save-outline" />
-              </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <div class="px-8">
-            <ion-textarea placeholder="Titre" autoGrow="true" class="font-semibold text-xl" formControlName="title"></ion-textarea>
-            <ion-textarea placeholder="Commencez ici votre idée..." autoGrow="true" formControlName="content"></ion-textarea>
-          </div>
-        </ion-content>
+<form [formGroup]="noteForm">
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header class="ion-no-border">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="closeModal()">
+              <ion-icon name="chevron-back-outline" />
+            </ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end" class="flex gap-4">
+            <ion-button (click)="toggleBookmark()" color="primary">
+              <ion-icon [name]="pinned ? 'star' : 'star-outline'" />
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="px-8">
+          <ion-textarea placeholder="Titre" autoGrow="true" class="font-semibold text-xl"
+            formControlName="title">
+          </ion-textarea>
+          <ion-textarea placeholder="Commencez ici votre idée..." autoGrow="true"
+            formControlName="content">
+          </ion-textarea>
+        </div>
+      </ion-content>
     </ng-template>
-    </ion-modal>
-  </form>
-}
+  </ion-modal>
+</form>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button (click)="addNewNote()" color="tertiary">

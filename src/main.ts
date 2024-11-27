@@ -23,7 +23,7 @@ const ionicStorageProviders = IonicStorageModule.forRoot({
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: IonicModule, useValue: IonicModule.forRoot({ mode: 'md' }) },
+    { provide: IonicModule, useValue: IonicModule.forRoot() },
     provideHttpClient(),
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),

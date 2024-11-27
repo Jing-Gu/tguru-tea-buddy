@@ -38,5 +38,6 @@
   </div>
 </div>
 
-<ion-alert [isOpen]="isAlertOpen" header="Your tea is ready!" [buttons]="['OK']"
-  (didDismiss)="setOpen(false)"></ion-alert>
+<ion-alert [isOpen]="isAlertOpen" header="Your tea is ready!" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)">
+</ion-alert>

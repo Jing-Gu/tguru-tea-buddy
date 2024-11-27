@@ -9,7 +9,7 @@
     "dev": "ng serve --port 4500",
     "build": "ng build",
     "sync": "npx cap sync",
-    "android": "ng build && npx cap sync && npx cap run android",
+    "android": "ng build && npx cap sync && npx cap open android",
     "open-android": "npx cap open android",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

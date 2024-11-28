@@ -1,18 +1,20 @@
 <div class='h-full p-4 flex flex-col justify-between'>
-  <div class="flex flex-row justify-between px-4">
-    <div class="flex flex-col items-center gap-2">
-      <ion-icon name="leaf-outline"></ion-icon>
-      <p>{{tea?.teaAmount}}<span class="ml-2">g</span></p>
+  @if(tea.teaAmount && tea.waterAmount && tea.temperature) {
+    <div class="flex flex-row justify-between px-4">
+      <div class="flex flex-col items-center gap-2">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <p>{{tea.teaAmount}}<span class="ml-2">g</span></p>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <ion-icon name="water-outline"></ion-icon>
+        <p>{{tea.waterAmount}}<span class="ml-2">ml</span></p>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <ion-icon name="thermometer-outline"></ion-icon>
+        <p>{{tea.temperature}}<span class="ml-2">˚C</span></p>
+      </div>
     </div>
-    <div class="flex flex-col items-center gap-2">
-      <ion-icon name="water-outline"></ion-icon>
-      <p>{{tea?.waterAmount}}<span class="ml-2">ml</span></p>
-    </div>
-    <div class="flex flex-col items-center gap-2">
-      <ion-icon name="thermometer-outline"></ion-icon>
-      <p>{{tea?.temperature}}<span class="ml-2">˚C</span></p>
-    </div>
-  </div>
+  }
   <h1 class="text-xl font-bold text-center text-sencha">{{tea?.label}}</h1>
   <div class='flex flex-col items-center gap-4'>
     <span class="loader" [ngClass]="{'animate': isAnimating}">
@@ -38,6 +40,8 @@
   </div>
 </div>
 
-<ion-alert [isOpen]="isAlertOpen" header="Your tea is ready!" [buttons]="alertButtons"
+<ion-alert [isOpen]="isAlertOpen"
+  header="Votre thé est prêt"
+  message="Bon dégustation !" [buttons]="alertButtons"
   (didDismiss)="setOpen(false)">
 </ion-alert>

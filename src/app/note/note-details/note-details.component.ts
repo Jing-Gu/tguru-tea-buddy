@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, FormsModule, Validators, FormBuilder } from '@angular/forms'
+import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonHeader, IonButtons, IonToolbar, IonBackButton, IonButton, IonIcon, IonContent, IonTextarea, IonFooter, IonTitle, AlertController } from "@ionic/angular/standalone";
-import { map, switchMap, tap } from 'rxjs';
+import { IonHeader, IonButtons, IonToolbar, IonBackButton, IonButton, IonIcon, IonTextarea, AlertController } from "@ionic/angular/standalone";
+import { map, switchMap } from 'rxjs';
 import { addIcons } from 'ionicons';
 import { chevronBackOutline, star, starOutline, trashOutline } from 'ionicons/icons';
 import { StorageService } from 'src/app/services/storage.service';
@@ -15,7 +15,7 @@ import { Note } from 'src/app/interface/note.interface'
   templateUrl: './note-details.component.html',
   styleUrls: ['./note-details.component.scss'],
   standalone: true,
-  imports: [IonTitle, IonFooter, IonTextarea, IonContent, IonIcon, IonButton, IonHeader, IonButtons, IonToolbar, IonBackButton,
+  imports: [IonTextarea, IonIcon, IonButton, IonHeader, IonButtons, IonToolbar, IonBackButton,
     CommonModule, ReactiveFormsModule
   ]
 })
@@ -40,10 +40,7 @@ export class NoteDetailsComponent implements OnInit {
   });
 
   constructor() {
-    addIcons({
-      chevronBackOutline, starOutline, star,
-      trashOutline
-    })
+    addIcons({trashOutline,chevronBackOutline,starOutline,star});
   }
 
   private setFormValues(note: Note | null) {
@@ -60,6 +57,13 @@ export class NoteDetailsComponent implements OnInit {
     }
   }
 
+  private deleteNote(uuid: string) {
+    this.storageService.deleteNote(uuid).then(_ => {
+      this.router.navigateByUrl('tabs/note');
+      this.storageService.getAllNotes();
+    })
+  }
+
   ngOnInit() {
     this.route.params.pipe(
       map(params => params['uuid']),
@@ -72,7 +76,7 @@ export class NoteDetailsComponent implements OnInit {
   }
 
 
-  protected updateNote(uuid: string) {
+  protected onUpdateNote(uuid: string) {
     if (this.noteForm.touched && this.noteForm.dirty) {
       const currentTime = new Date();
       const updated = {
@@ -89,13 +93,6 @@ export class NoteDetailsComponent implements OnInit {
 
   protected onDeleteNote(uuid: string) {
     this.presentAlert(uuid);
-  }
-
-  private deleteNote(uuid: string) {
-    this.storageService.deleteNote(uuid).then(_ => {
-      this.router.navigateByUrl('tabs/note');
-      this.storageService.getAllNotes();
-    })
   }
 
   private async presentAlert(uuid: string) {

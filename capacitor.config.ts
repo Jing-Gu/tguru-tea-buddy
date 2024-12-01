@@ -2,16 +2,18 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.tguru.teabuddy',
-  appName: 'tguru-tea-buddy',
+  appName: 'TGuru Buddy',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {
     SplashScreen: {
       launchShowDuration: 1000,
       launchAutoHide: true,
+      androidSplashResourceName: "splash",
       androidScaleType: 'CENTER_CROP',
+      splashFullScreen: true,
       splashImmersive: true,
-      backgroundColor: '#BBE1CD'
+      backgroundColor: '#F4EFE0'
     },
     CapacitorSQLite: {
       iosDatabaseLocation: 'Library/CapacitorDatabase',

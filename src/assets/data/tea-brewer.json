@@ -6,7 +6,10 @@
     "teaAmount": 5,
     "waterAmount": 250,
     "temperature": 70,
-    "brewTime": 10,
+    "brewTime": {
+      "minute": "0",
+      "second": "10"
+    },
     "icon": "white_tea.svg",
     "contentfulTag": "whiteTea"
   },
@@ -17,7 +20,10 @@
     "teaAmount": 5,
     "waterAmount": 250,
     "temperature": 70,
-    "brewTime": 10,
+    "brewTime": {
+      "minute": "0",
+      "second": "10"
+    },
     "icon": "green_tea.svg",
     "contentfulTag": "greenTea"
   },
@@ -28,7 +34,10 @@
     "teaAmount": 5,
     "waterAmount": 250,
     "temperature": 90,
-    "brewTime": 60,
+    "brewTime": {
+      "minute": "1",
+      "second": "0"
+    },
     "icon": "oolong_tea.svg",
     "contentfulTag": "oolong"
   },
@@ -39,7 +48,10 @@
     "teaAmount": 5,
     "waterAmount": 250,
     "temperature": 100,
-    "brewTime": 35,
+    "brewTime": {
+      "minute": "0",
+      "second": "35"
+    },
     "icon": "pu_er.svg",
     "contentfulTag": "puerhSheng"
   },
@@ -50,7 +62,10 @@
     "teaAmount": 5,
     "waterAmount": 250,
     "temperature": 100,
-    "brewTime": 105,
+    "brewTime": {
+      "minute": "1",
+      "second": "45"
+    },
     "icon": "pu_er.svg",
     "contentfulTag": "puerhShou"
   },
@@ -61,7 +76,10 @@
     "teaAmount": 5,
     "waterAmount": 250,
     "temperature": 90,
-    "brewTime": 90,
+    "brewTime": {
+      "minute": "1",
+      "second": "30"
+    },
     "icon": "black_tea.svg",
     "contentfulTag": "blackRedTea"
   },
@@ -72,7 +90,10 @@
     "teaAmount": 5,
     "waterAmount": 250,
     "temperature": 90,
-    "brewTime": 120,
+    "brewTime": {
+      "minute": "2",
+      "second": "0"
+    },
     "icon": "herbal_tea.svg",
     "contentfulTag": "herbal"
   }

@@ -1,0 +1,79 @@
+[
+  {
+    "id": 0,
+    "name": "white",
+    "label": "Thé Blanc",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 70,
+    "brewTime": 10,
+    "icon": "white_tea.svg",
+    "contentfulTag": "whiteTea"
+  },
+  {
+    "id": 2,
+    "name": "green",
+    "label": "Thé Vert",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 70,
+    "brewTime": 10,
+    "icon": "green_tea.svg",
+    "contentfulTag": "greenTea"
+  },
+  {
+    "id": 3,
+    "name": "oolong",
+    "label": "Thé Wulong",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 90,
+    "brewTime": 60,
+    "icon": "oolong_tea.svg",
+    "contentfulTag": "oolong"
+  },
+  {
+    "id": 4,
+    "name": "sheng-puerh",
+    "label": "Thé Puerh Sheng",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 100,
+    "brewTime": 35,
+    "icon": "pu_er.svg",
+    "contentfulTag": "puerhSheng"
+  },
+  {
+    "id": 5,
+    "name": "shou-puerh",
+    "label": "Thé Puerh Shou",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 100,
+    "brewTime": 105,
+    "icon": "pu_er.svg",
+    "contentfulTag": "puerhShou"
+  },
+  {
+    "id": 6,
+    "name": "red-black",
+    "label": "Thé Rouge-Noir",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 90,
+    "brewTime": 90,
+    "icon": "black_tea.svg",
+    "contentfulTag": "blackRedTea"
+  },
+  {
+    "id":7,
+    "name": "herbal",
+    "label": "Tisane",
+    "teaAmount": 5,
+    "waterAmount": 250,
+    "temperature": 90,
+    "brewTime": 120,
+    "icon": "herbal_tea.svg",
+    "contentfulTag": "herbal"
+  }
+]

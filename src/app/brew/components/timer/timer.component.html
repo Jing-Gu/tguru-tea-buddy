@@ -1,5 +1,5 @@
 <div class='h-full p-4 flex flex-col justify-between'>
-  @if(tea.teaAmount && tea.waterAmount && tea.temperature) {
+  @if(tea && tea.teaAmount && tea.waterAmount && tea.temperature) {
     <div class="flex flex-row justify-between px-4">
       <div class="flex flex-col items-center gap-2">
         <ion-icon name="leaf-outline"></ion-icon>
@@ -25,7 +25,7 @@
     </p>
   </div>
   <div class="flex flex-col gap-4">
-    @if(timerIsOff) {
+    @if(isTimerOff) {
     <ion-button color='primary' expand='block' shape='round' (click)="startTimer()">
       Commencer
     </ion-button>
@@ -43,5 +43,5 @@
 <ion-alert [isOpen]="isAlertOpen"
   header="Votre thé est prêt"
   message="Bon dégustation !" [buttons]="alertButtons"
-  (didDismiss)="setOpen(false)">
+  (didDismiss)="closeAlert(false)">
 </ion-alert>

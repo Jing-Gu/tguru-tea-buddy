@@ -1,33 +1,34 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { IonIcon, IonButton, IonAlert } from '@ionic/angular/standalone';
 import { leafOutline, waterOutline, thermometerOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons'
 import { BrewService } from 'src/app/services/brew.service'
+import { Tea } from 'src/app/interface/tea.interface';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
   standalone: true,
-  imports: [IonAlert, CommonModule, RouterLink, IonIcon, IonButton]
+  imports: [IonAlert, CommonModule, IonIcon, IonButton]
 })
 export class TimerComponent  implements OnInit {
-  private _brewService = inject(BrewService);
-  private _router = inject(Router);
+  private brewService = inject(BrewService);
+  private router = inject(Router);
+  private audio: HTMLAudioElement | undefined;
 
   // to store the identifier returned by the setInterval function.
   // This identifier is necessary to clear the interval later using clearInterval
   // This allows you to stop the timer when the countdown reaches zero or when you need to reset the timer.
-  private _interval: any;
+  private interval: any;
 
-  protected tea: any;
+  protected tea: Tea | undefined;
   protected brewingTime: string = '';
-  protected timerIsOff = true;
-
+  protected isTimerOff = true;
   protected isAlertOpen = false;
-  protected isAnimating: boolean = false;
+  protected isAnimating = false;
 
   protected alertButtons = [
     {
@@ -44,68 +45,72 @@ export class TimerComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.tea = this._brewService.getCurrentTea();
-    this.checkDefaultBrewTime(this.tea.brewTime)
-  }
-
-  private checkDefaultBrewTime(brewSecondsDefault: number) {
-    let brewMinutes;
-    let brewSeconds;
-    if (brewSecondsDefault < 60) {
-      brewMinutes = 0;
-      brewSeconds = brewSecondsDefault;
-    } else {
-      brewMinutes = Math.floor(brewSecondsDefault/60);
-      brewSeconds = brewSecondsDefault % 60;
+    this.tea = this.brewService.getCurrentTea();
+    if (this.tea) {
+      this.brewingTime = this.formatTime(this.tea.brewTime.minute, this.tea.brewTime.second);
     }
-    // eslint-disable-next-line max-len
-    this.brewingTime = `${brewMinutes < 1 ? '0' : ''}${brewMinutes}:${brewSeconds < 10 ? '0' : ''}${brewSeconds}`;
-  }
-
-  private displayTimeLeft(remainingSeconds: number) {
-    const minutes = Math.floor(remainingSeconds / 60);
-    const seconds = remainingSeconds % 60;
-    this.brewingTime = `${minutes < 1 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
   protected startTimer() {
-    this.timerIsOff = false;
+    this.isTimerOff = false;
     this.isAnimating = true;
-    let timer = this.tea.brewTime * 1000;
-    this._interval = setInterval(() => {
-      timer -= 1000;
-      const remainingSeconds = Math.max(0, timer / 1000);
-
-      this.displayTimeLeft(remainingSeconds);
-
-      if (timer <= 0) {
-        clearInterval(this._interval);
-        this.isAlertOpen = true;
-        this.isAnimating = false;
-        this._playCompletionSound();
-      }
-    }, 1000);
+    if (this.tea) {
+      let timer = (Number(this.tea.brewTime.minute) * 60) + Number(this.tea.brewTime.second);
+      this.interval = setInterval(() => {
+        timer -= 1;
+        const remainingSeconds = Math.max(0, timer);
+        this.displayTimeLeft(remainingSeconds);
+        if (timer <= 0) {
+          clearInterval(this.interval);
+          this.isAlertOpen = true;
+          this.isAnimating = false;
+          this.playCompletionSound();
+        }
+      }, 1000);
+    }
   }
 
   protected resetTimer() {
-    this.timerIsOff = true;
+    this.isTimerOff = true;
     this.isAnimating = false;
-    clearInterval(this._interval);
-    this.checkDefaultBrewTime(this.tea.brewTime);
+    clearInterval(this.interval);
+    if (this.tea) {
+      this.brewingTime = this.formatTime(this.tea.brewTime.minute, this.tea.brewTime.second);
+    }
   }
 
   protected cancelTimer() {
     this.resetTimer();
-    this._router.navigate(['../']);
+    this.router.navigate(['../']);
   }
 
-  protected setOpen(isOpen: boolean) {
+  protected closeAlert(isOpen: boolean) {
     this.isAlertOpen = isOpen;
+    this.stopCompletionSound();
   }
 
-  private _playCompletionSound() {
-    // const audio = new Audio('assets/sound/completion-sound.mp3');
-    // audio.play();
+  private playCompletionSound() {
+    this.audio = new Audio('assets/completion-sound.mp3');
+    this.audio.play();
+  }
+
+  private stopCompletionSound() {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+    }
+  }
+
+  private formatTime(min: number, sec: number) {
+    const minute = min < 10 ? `0${min}` : min;
+    const second = sec < 10 ? `0${sec}` : sec;
+    return `${minute} : ${second}`;
+  }
+
+  private displayTimeLeft(remainingSeconds: number) {
+    const minute = Math.floor(remainingSeconds / 60);
+    const second = remainingSeconds % 60;
+    this.brewingTime = this.formatTime(minute, second);
   }
 
 }

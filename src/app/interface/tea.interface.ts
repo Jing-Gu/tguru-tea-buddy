@@ -5,7 +5,12 @@ export interface Tea {
   teaAmount: number,
   waterAmount: number,
   temperature: number,
-  brewTime: number,
+  brewTime: BrewTime,
   icon: string,
   contentfulTag: string
+}
+
+interface BrewTime {
+  minute: number,
+  second: number
 }

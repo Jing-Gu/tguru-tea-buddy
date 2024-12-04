@@ -6,7 +6,7 @@
       <span class="text-sm w-full p-3 text-sencha border-t-2 border-sencha">{{tea.label}}</span>
     </button>
   }
-  <button class="border-solid border-2 border-sencha" id="present-timer-dialog" (click)='openModal()'>
+  <button class="border-solid border-2 border-sencha" id="present-timer-dialog" (click)='presentAlert()'>
     <img src='assets/icon/customize.svg' alt=''>
     <span class="text-sm w-full p-3 text-sencha border-t-2 border-sencha">Minuterie Manuelle</span>
   </button>
@@ -15,7 +15,7 @@
 } @else {
 <ion-progress-bar type="indeterminate" color="tertiary"></ion-progress-bar>
 }
-
+<!--
 <form [formGroup]="customTimerForm">
   <ion-modal [isOpen]="isModalOpen">
     <ng-template>
@@ -49,3 +49,4 @@
     </ng-template>
   </ion-modal>
 </form>
+ -->

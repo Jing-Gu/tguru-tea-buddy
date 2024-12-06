@@ -6,7 +6,7 @@
       <span class="text-sm w-full p-3 text-sencha border-t-2 border-sencha">{{tea.label}}</span>
     </button>
   }
-  <button class="border-solid border-2 border-sencha" id="present-timer-dialog" (click)='presentAlert()'>
+  <button class="border-solid border-2 border-sencha" routerLink="customize">
     <img src='assets/icon/customize.svg' alt=''>
     <span class="text-sm w-full p-3 text-sencha border-t-2 border-sencha">Minuterie Manuelle</span>
   </button>
@@ -15,38 +15,4 @@
 } @else {
 <ion-progress-bar type="indeterminate" color="tertiary"></ion-progress-bar>
 }
-<!--
-<form [formGroup]="customTimerForm">
-  <ion-modal [isOpen]="isModalOpen">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="closeModal()">
-              <ion-icon name="chevron-back-outline" />
-            </ion-button>
-          </ion-buttons>
-          <ion-title>Minuterie Manuelle</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="setTimer()"
-              [disabled]="!minute?.valid || !second?.valid || (!minute?.value && !second?.value)">OK
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        <ion-item>
-          <ion-input label="Minute" labelPlacement="stacked"
-            type="number" inputmode="numeric" pattern="[0-9]*" min="0" max="10" formControlName="minute">
-          </ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Seconde" labelPlacement="stacked"
-            type="number" inputmode="numeric" pattern="[0-9]*" min="0" max="60" formControlName="second">
-          </ion-input>
-        </ion-item>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-</form>
- -->
+

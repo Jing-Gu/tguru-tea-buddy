@@ -1,11 +1,11 @@
 @if(currentNote$ | async; as currentNote) {
-  <form [formGroup]="noteForm" class="h-full flex flex-col overflow-hidden">
+  <form [formGroup]="noteForm" class="h-full flex flex-col overflow-hidden bg-almond">
     <ion-header mode="md" class="ion-no-border">
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="tabs/note" icon="chevron-back-outline"
-            (click)="onUpdateNote(currentNote.uuid)">
-          </ion-back-button>
+          <ion-button (click)="onUpdateNote(currentNote.uuid)">
+            <ion-icon name="chevron-back-outline" />
+          </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
           <ion-button (click)="onToggleBookmark()">
@@ -31,5 +31,32 @@
       </div>
     </div>
   </form>
+} @else {
+  <form [formGroup]="newNoteForm" class="h-full flex flex-col overflow-hidden bg-almond">
+    <ion-header mode="md" class="ion-no-border">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="onUpdateNote()">
+            <ion-icon name="chevron-back-outline" />
+          </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button (click)="onToggleBookmark()" color="primary">
+            <ion-icon [name]="pinned ? 'star' : 'star-outline'" />
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="px-8">
+        <ion-textarea placeholder="Titre" autoGrow="true" class="font-semibold text-xl"
+          formControlName="title">
+        </ion-textarea>
+        <ion-textarea placeholder="Commencez ici votre idée..." autoGrow="true"
+          formControlName="content">
+        </ion-textarea>
+      </div>
+    </ion-content>
+</form>
 }
 

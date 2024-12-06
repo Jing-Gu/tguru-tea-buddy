@@ -1,8 +1,9 @@
+import { v4 as uuidv4 } from 'uuid';
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms'
+import { ReactiveFormsModule, Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonHeader, IonButtons, IonToolbar, IonBackButton, IonButton, IonIcon, IonTextarea, AlertController } from "@ionic/angular/standalone";
+import { IonHeader, IonButtons, IonToolbar, IonBackButton, IonButton, IonIcon, IonTextarea, AlertController, IonContent, IonNavLink } from "@ionic/angular/standalone";
 import { map, switchMap } from 'rxjs';
 import { addIcons } from 'ionicons';
 import { chevronBackOutline, star, starOutline, trashOutline } from 'ionicons/icons';
@@ -15,7 +16,7 @@ import { Note } from 'src/app/interface/note.interface'
   templateUrl: './note-details.component.html',
   styleUrls: ['./note-details.component.scss'],
   standalone: true,
-  imports: [IonTextarea, IonIcon, IonButton, IonHeader, IonButtons, IonToolbar, IonBackButton,
+  imports: [IonNavLink, IonContent, IonTextarea, IonIcon, IonButton, IonHeader, IonButtons, IonToolbar, IonBackButton,
     CommonModule, ReactiveFormsModule
   ]
 })
@@ -28,9 +29,18 @@ export class NoteDetailsComponent implements OnInit {
   private alertController = inject(AlertController);
 
   protected currentNote$ = this.storageService.currentNoteObs;
-  protected pinned: boolean | undefined;
+  protected pinned: boolean | undefined = false;
 
-  protected noteForm = this.fb.group({
+  protected newNoteForm: FormGroup = this.fb.group({
+    uuid: [uuidv4()],
+    title: [''],
+    content: [''],
+    pinned: [false],
+    created: [''],
+    modified: [null],
+  });
+
+  protected noteForm: FormGroup = this.fb.group({
     uuid: [''],
     title: [''],
     content: ['', Validators.required],
@@ -68,7 +78,7 @@ export class NoteDetailsComponent implements OnInit {
     this.route.params.pipe(
       map(params => params['uuid']),
       switchMap(uuid => this.storageService.getNoteByUuid(uuid))
-    ).subscribe(note => this.setFormValues(note))
+    ).subscribe(note => this.setFormValues(note));
   }
 
   protected onToggleBookmark() {
@@ -76,23 +86,50 @@ export class NoteDetailsComponent implements OnInit {
   }
 
 
-  protected onUpdateNote(uuid: string) {
-    if (this.noteForm.touched && this.noteForm.dirty) {
-      const currentTime = new Date();
-      const updated = {
-        title: this.noteForm.value.title!,
-        content: this.noteForm.value.content!,
-        pinned: this.pinned,
-        modified: currentTime
+
+  protected onUpdateNote(uuid?: string) {
+    if (!uuid) {
+      // on leaving a new note
+      if(this.newNoteForm) {
+        const title = this.newNoteForm.get('title')?.value;
+        const content = this.newNoteForm.get('content')?.value;
+        if (title || content) {
+          this.submitNote();
+        } else {
+          this.newNoteForm?.reset();
+        }
       }
-      this.storageService.updateNote(uuid, updated).then(_ => {
-        this.storageService.getAllNotes()
-      })
+    } else {
+      // on leaving an existing note
+      if (this.noteForm.touched && this.noteForm.dirty) {
+        const updated = {
+          title: this.noteForm.value.title!,
+          content: this.noteForm.value.content!,
+          pinned: this.pinned,
+          modified: new Date()
+        }
+        this.storageService.updateNote(uuid, updated).then(_ => {
+          this.storageService.getAllNotes()
+        })
+      }
     }
+    this.router.navigateByUrl('tabs/note');
   }
 
   protected onDeleteNote(uuid: string) {
     this.presentAlert(uuid);
+  }
+
+  private submitNote() {
+    if (this.newNoteForm) {
+      this.newNoteForm.patchValue({
+        created: new Date()
+      });
+      this.storageService.addNote(this.newNoteForm.value).then(_ => {
+        this.storageService.getAllNotes();
+      })
+      this.newNoteForm.reset();
+    }
   }
 
   private async presentAlert(uuid: string) {

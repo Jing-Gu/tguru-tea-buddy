@@ -1,5 +1,11 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { BrewPage } from '../brew/brew.page';
+import { TimerComponent } from '../brew/components/timer/timer.component';
+import { CustomizeFormComponent } from '../brew/components/customize-form/customize-form.component';
+import { NoteListComponent } from '../note/note-list/note-list.component';
+import { NoteDetailsComponent } from '../note/note-details/note-details.component';
+import { MorePage } from '../more/more.page';
 
 export const routes: Routes = [
   {
@@ -11,11 +17,19 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            loadComponent: () => import('../brew/brew.page').then(p => p.BrewPage)
+            component: BrewPage
+          },
+          {
+            path: 'customize',
+            component: CustomizeFormComponent
+          },
+          {
+            path: ':timer',
+            component: TimerComponent
           },
           {
             path: ':name',
-            loadComponent: () => import('../brew/components/timer/timer.component').then(c => c.TimerComponent)
+            component: TimerComponent
           }
         ]
       },
@@ -24,30 +38,21 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            loadComponent: () => import('../note/note-list/note-list.component').then(c => c.NoteListComponent)
+            component: NoteListComponent
+          },
+          {
+            path: 'add',
+            component: NoteDetailsComponent
           },
           {
             path: ':uuid',
-            loadComponent: () => import('../note/note-details/note-details.component').then(c => c.NoteDetailsComponent)
+            component: NoteDetailsComponent
           }
         ]
       },
-      /*       {
-              path: 'read',
-              children: [
-                {
-                  path: '',
-                  loadComponent: () => import('../read/read.module').then(m => m.ReadPageModule)
-                },
-                {
-                  path: 'detail',
-                  loadComponent: () => import('../read/tea-details/tea-details.module').then(m => m.TeaDetailsPageModule)
-                }
-              ]
-            }, */
       {
         path: 'more',
-        loadComponent: () => import('../more/more.page').then(p => p.MorePage)
+        component: MorePage
       },
       {
         path: '',

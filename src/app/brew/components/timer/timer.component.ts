@@ -50,12 +50,13 @@ export class TimerComponent  implements OnInit {
     if (name && name !== "cus-tea") {
       this.brewService.getSimpleTimer(name).subscribe(tea => {
         this.tea = tea;
+        this.brewingTime = this.formatTime(this.tea.brewTime.minute, this.tea.brewTime.second);
       });
     } else if (name === "cus-tea") {
       this.tea = this.brewService.getCustomzieTea();
-    }
-    if (this.tea) {
-      this.brewingTime = this.formatTime(this.tea.brewTime.minute, this.tea.brewTime.second);
+      if (this.tea) {
+        this.brewingTime = this.formatTime(this.tea.brewTime.minute, this.tea.brewTime.second);
+      }
     }
   }
 

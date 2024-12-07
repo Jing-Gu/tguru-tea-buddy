@@ -43,13 +43,10 @@ export class CustomizeFormComponent  implements OnInit {
     this.router.navigateByUrl('tabs/brew');
   }
 
-  // only customize tile nav has good animation for forward and back, because the clear route /customize?
-  // TODO: instead of route as :name, use static route /timer, then get tea data in the component via contentful
-
   protected goToTimer() {
     if(this.customTimerForm.valid) {
-      const minute: number = this.customTimerForm.value.minute;
-      const second: number = this.customTimerForm.value.second;
+      const minute: number = this.customTimerForm.value.minute || 0;
+      const second: number = this.customTimerForm.value.second || 0;
       const cusTea = {
         id: 7,
         name: "customized",

@@ -1,7 +1,7 @@
 @if(brewList$ | async; as brewList) {
 <div class="tiles">
   @for(tea of brewList; track tea.id) {
-    <button class="border-solid border-2 border-sencha" (click)='goToTimer(tea)'>
+    <button class="border-solid border-2 border-sencha" [routerLink]="[tea.name]">
       <img src='assets/icon/{{tea.icon}}' alt=''>
       <span class="text-sm w-full p-3 text-sencha border-t-2 border-sencha">{{tea.label}}</span>
     </button>

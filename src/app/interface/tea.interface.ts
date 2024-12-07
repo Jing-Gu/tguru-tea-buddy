@@ -6,8 +6,7 @@ export interface Tea {
   waterAmount: number,
   temperature: number,
   brewTime: BrewTime,
-  icon: string,
-  contentfulTag: string
+  icon: string
 }
 
 interface BrewTime {

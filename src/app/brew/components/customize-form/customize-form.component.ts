@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonItem, IonIcon, IonContent, IonInput } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
 import { chevronBackOutline } from 'ionicons/icons';
+import { BrewService } from 'src/app/services/brew.service';
 
 @Component({
   selector: 'tguru-customize-form',
@@ -16,6 +17,7 @@ export class CustomizeFormComponent  implements OnInit {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
+  private brewService = inject(BrewService);
 
   constructor() {
     addIcons({chevronBackOutline});
@@ -46,9 +48,23 @@ export class CustomizeFormComponent  implements OnInit {
 
   protected goToTimer() {
     if(this.customTimerForm.valid) {
-      console.log(this.customTimerForm.value)
-      //this.brewService.setCurrentTea(tea);
-      this.router.navigateByUrl('tabs/brew/timer');
+      const minute: number = this.customTimerForm.value.minute;
+      const second: number = this.customTimerForm.value.second;
+      const cusTea = {
+        id: 7,
+        name: "customized",
+        label: "Minuterie Manuelle",
+        teaAmount: 0,
+        waterAmount: 0,
+        temperature: 0,
+        brewTime: {
+          minute: minute,
+          second: second
+        },
+        icon: "customize.svg"
+      }
+      this.brewService.setCustomzieTea(cusTea)
+      this.router.navigateByUrl('tabs/brew/cus-tea');
     }
   }
 

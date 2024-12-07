@@ -1,0 +1,13 @@
+{
+  "id": 0,
+  "name": "white",
+  "label": "Thé Blanc",
+  "teaAmount": 5,
+  "waterAmount": 250,
+  "temperature": 70,
+  "brewTime": {
+    "minute": 0,
+    "second": 10
+  },
+  "icon": "white_tea.svg"
+}

@@ -1,0 +1,13 @@
+{
+  "id": 4,
+  "name": "shou-puerh",
+  "label": "Thé Puerh Shou",
+  "teaAmount": 5,
+  "waterAmount": 250,
+  "temperature": 100,
+  "brewTime": {
+    "minute": 1,
+    "second": 45
+  },
+  "icon": "pu_er.svg"
+}

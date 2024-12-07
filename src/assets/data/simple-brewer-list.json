@@ -1,0 +1,44 @@
+[
+  {
+    "id": 0,
+    "name": "white",
+    "label": "Thé Blanc",
+    "icon": "white_tea.svg"
+  },
+  {
+    "id": 1,
+    "name": "green",
+    "label": "Thé Vert",
+    "icon": "green_tea.svg"
+  },
+  {
+    "id": 2,
+    "name": "oolong",
+    "label": "Thé Wulong",
+    "icon": "oolong_tea.svg"
+  },
+  {
+    "id": 3,
+    "name": "sheng-puerh",
+    "label": "Thé Puerh Sheng",
+    "icon": "pu_er.svg"
+  },
+  {
+    "id": 4,
+    "name": "shou-puerh",
+    "label": "Thé Puerh Shou",
+    "icon": "pu_er.svg"
+  },
+  {
+    "id": 5,
+    "name": "red-black",
+    "label": "Thé Rouge-Noir",
+    "icon": "black_tea.svg"
+  },
+  {
+    "id": 6,
+    "name": "herbal",
+    "label": "Tisane",
+    "icon": "herbal_tea.svg"
+  }
+]

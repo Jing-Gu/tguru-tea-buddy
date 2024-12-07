@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "name": "sheng-puerh",
+  "label": "Thé Puerh Sheng",
+  "teaAmount": 5,
+  "waterAmount": 250,
+  "temperature": 100,
+  "brewTime": {
+    "minute": 0,
+    "second": 35
+  },
+  "icon": "pu_er.svg"
+}

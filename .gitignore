@@ -71,3 +71,7 @@ Thumbs.db
 
 # Platforms
 /android/
+
+
+# Ignore all environment files
+src/environments/*.ts

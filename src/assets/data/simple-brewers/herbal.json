@@ -1,0 +1,13 @@
+{
+  "id":6,
+  "name": "herbal",
+  "label": "Tisane",
+  "teaAmount": 5,
+  "waterAmount": 250,
+  "temperature": 90,
+  "brewTime": {
+    "minute": 2,
+    "second": 0
+  },
+  "icon": "herbal_tea.svg"
+}

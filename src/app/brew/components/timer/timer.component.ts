@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonIcon, IonButton, IonAlert } from '@ionic/angular/standalone';
 import { leafOutline, waterOutline, thermometerOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons'
@@ -17,6 +17,7 @@ import { Tea } from 'src/app/interface/tea.interface';
 export class TimerComponent  implements OnInit {
   private brewService = inject(BrewService);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
   private audio: HTMLAudioElement | undefined;
 
   // to store the identifier returned by the setInterval function.
@@ -45,7 +46,14 @@ export class TimerComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.tea = this.brewService.getCurrentTea();
+    const name = this.route.snapshot.paramMap.get("name");
+    if (name && name !== "cus-tea") {
+      this.brewService.getSimpleTimer(name).subscribe(tea => {
+        this.tea = tea;
+      });
+    } else if (name === "cus-tea") {
+      this.tea = this.brewService.getCustomzieTea();
+    }
     if (this.tea) {
       this.brewingTime = this.formatTime(this.tea.brewTime.minute, this.tea.brewTime.second);
     }

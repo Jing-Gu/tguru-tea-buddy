@@ -8,19 +8,25 @@ import { Tea } from '../interface/tea.interface';
 })
 export class BrewService {
 
-  private _http = inject(HttpClient);
-  private _tea: Tea | undefined;
+  private http = inject(HttpClient);
+  private DATA_SIMPLE_BREWER_LIST = "assets/data/simple-brewer-list.json";
+  private DATA_SIMPLE_TIMER = "assets/data/simple-brewers/";
+  private cusTea: Tea | undefined;
 
-  setCurrentTea(tea: Tea) {
-    this._tea = tea;
+  setCustomzieTea(tea: Tea) {
+    this.cusTea = tea;
   }
 
-  getCurrentTea() {
-    return this._tea;
+  getCustomzieTea() {
+    return this.cusTea;
   }
 
 
-  getSimpleBrewList(): Observable<Tea[]> {
-    return this._http.get<Tea[]>('../../assets/data/tea-brewer.json');
+  public getSimpleBrewList(): Observable<Tea[]> {
+    return this.http.get<Tea[]>(this.DATA_SIMPLE_BREWER_LIST);
+  }
+
+  public getSimpleTimer(tea: string): Observable<Tea> {
+    return this.http.get<Tea>(`${this.DATA_SIMPLE_TIMER}${tea}.json`);
   }
 }

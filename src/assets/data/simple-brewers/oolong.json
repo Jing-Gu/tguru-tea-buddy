@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "name": "oolong",
+  "label": "Thé Wulong",
+  "teaAmount": 5,
+  "waterAmount": 250,
+  "temperature": 90,
+  "brewTime": {
+    "minute": 1,
+    "second": 0
+  },
+  "icon": "oolong_tea.svg"
+}

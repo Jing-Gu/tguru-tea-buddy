@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "name": "red-black",
+  "label": "Thé Rouge-Noir",
+  "teaAmount": 5,
+  "waterAmount": 250,
+  "temperature": 90,
+  "brewTime": {
+    "minute": 1,
+    "second": 30
+  },
+  "icon": "black_tea.svg"
+}

@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "name": "green",
+  "label": "Thé Vert",
+  "teaAmount": 5,
+  "waterAmount": 250,
+  "temperature": 70,
+  "brewTime": {
+    "minute": 0,
+    "second": 10
+  },
+  "icon": "green_tea.svg"
+}

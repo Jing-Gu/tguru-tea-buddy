@@ -24,10 +24,6 @@ export const routes: Routes = [
             component: CustomizeFormComponent
           },
           {
-            path: ':timer',
-            component: TimerComponent
-          },
-          {
             path: ':name',
             component: TimerComponent
           }

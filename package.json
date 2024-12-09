@@ -2,8 +2,8 @@
   "name": "tguru-tea-buddy",
   "version": "1.0.0",
   "author": "Jing Gu",
-  "description": "",
-  "homepage": "https://ionicframework.com/",
+  "description": "TGuru Tea Buddy: Brewing timer, tasting note, teakipedia, and more",
+  "homepage": "http://www.jinggu.dev/tguru-tea-buddy/",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --port 4500",
